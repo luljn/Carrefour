@@ -3,6 +3,7 @@
 # Description
 
 Simulation d'un système de gestion de la circulation à travers un ensemble de quatre carrefours.
+Développé sous Ubuntu 22.
 
 # Outils utilisés
 

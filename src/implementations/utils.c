@@ -6,7 +6,7 @@
 
 void genererCarrefours(Carrefour *carrefours[]){
 
-    for (int i = 0; i < 4; i++){
+    for (int i = 0; i<4; i++){
 
         carrefours[i] = malloc(sizeof(Carrefour));
 
@@ -25,5 +25,19 @@ void genererCarrefours(Carrefour *carrefours[]){
 
 void genererVehicules(Vehicule *vehicules[]){
 
-    printf("\nJe suis censé générer des véhicules\n");
+    for (int i = 0; i<4; i++){
+
+        vehicules[i] = malloc(sizeof(Vehicule));
+
+        if (vehicules[i] == NULL){
+
+            perror("erreur d'allocation dynamique avec malloc");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    for(int i = 0; i<=3; i++){
+
+        *vehicules[i] = initialiserVehicule(i+1, "voiture", 30.0, "Carrefour 1");
+    }
 }

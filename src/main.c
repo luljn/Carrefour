@@ -12,7 +12,7 @@ int main(void){
     printf("\n\n\t\t\t**** Système de gestion de carrefour ****\n\n\n");
 
     Carrefour *carrefours[4];  // Tableau de pointeur sur carrefour.
-    Vehicule *vehicules[4]; // Tableau de pointeur sur véhicule.
+    Vehicule *vehicules[10]; // Tableau de pointeur sur véhicule.
 
     genererCarrefours(carrefours);
     genererVehicules(vehicules);
@@ -22,7 +22,7 @@ int main(void){
         afficherCaracteristiquesCarrefour(carrefours[i]);
     }
 
-    for(int i = 0; i<=3; i++){
+    for(int i = 0; i<=9; i++){
 
         afficherCaracteristiquesVehicule(vehicules[i]);
     }
@@ -33,7 +33,7 @@ int main(void){
         free(carrefours[i]);
     }
 
-    for(int i = 0; i<=3; i++){
+    for(int i = 0; i<=9; i++){
 
         free(vehicules[i]);
     }

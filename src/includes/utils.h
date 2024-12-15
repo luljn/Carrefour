@@ -6,8 +6,8 @@
 
 
 
-void genererCarrefours(Carrefour carrefour[]);
-void genererVehicules(Vehicule vehicules[]);
+void genererCarrefours(Carrefour *carrefours[]);
+void genererVehicules(Vehicule *vehicules[]);
 
 
 

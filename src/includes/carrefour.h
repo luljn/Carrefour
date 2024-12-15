@@ -11,7 +11,7 @@ struct Carrefour
     int max;                  // Nombre maximum de véhicules pouvant être accueilli.
 };
 
-void initialiserCarrefour(Carrefour* carrefour, int id, int compteur, int max);
+Carrefour initialiserCarrefour(int id, int compteur, int max);
 void afficherCaracteristiquesCarrefour(Carrefour* carrefour);
 
 

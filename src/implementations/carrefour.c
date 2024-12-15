@@ -3,11 +3,14 @@
 
 
 
-void initialiserCarrefour(Carrefour* carrefour, int id, int compteur, int max){
+Carrefour initialiserCarrefour(int id, int compteur, int max){
 
+    Carrefour *carrefour = malloc(sizeof(Carrefour));
     carrefour->id = id;
     carrefour->compteur = compteur;
     carrefour->max = max;
+
+    return *carrefour;
 }
 
 void afficherCaracteristiquesCarrefour(Carrefour* carrefour){

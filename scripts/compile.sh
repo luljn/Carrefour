@@ -5,4 +5,4 @@
 
 # gcc ../build/main.o ../build/vehicule.o -o ../executable/main
 
-gcc ../src/main.c ../src/implementations/vehicule.c ../src/implementations/carrefour.c -I../src/includes -o ../executable/main
+gcc ../src/main.c ../src/implementations/vehicule.c ../src/implementations/carrefour.c ../src/implementations/utils.c -I../src/includes -o ../executable/main

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 bash compile.sh
-./main
+\../executable/main

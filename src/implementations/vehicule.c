@@ -12,7 +12,7 @@ void initialiserVehicule(Vehicule* vehicule, int id, char type[100], float vites
     strcpy(vehicule->destination, destination);
 }
 
-void afficherCaracteristiques(Vehicule* vehicule){
+void afficherCaracteristiquesVehicule(Vehicule* vehicule){
 
     printf("Véhicule->Id : %d\n", vehicule->id);
     printf("Véhicule->Type : %s\n", vehicule->type);

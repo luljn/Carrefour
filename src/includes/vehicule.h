@@ -13,7 +13,7 @@ struct Vehicule
 };
 
 void initialiserVehicule(Vehicule* vehicule, int id, char type[100], float vitesse, char destination[100]);
-void afficherCaracteristiques(Vehicule* vehicule);
+void afficherCaracteristiquesVehicule(Vehicule* vehicule);
 
 
 

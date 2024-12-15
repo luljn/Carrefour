@@ -4,6 +4,8 @@
 
 
 
+void title(void){ system("clear"); printf("\n\n\t\t\t**** Système de gestion de carrefour ****\n\n\n"); }
+
 void genererCarrefours(Carrefour *carrefours[]){
 
     for (int i = 0; i<4; i++){

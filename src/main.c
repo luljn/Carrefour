@@ -8,8 +8,7 @@
 
 int main(void){
 
-    system("clear");
-    printf("\n\n\t\t\t**** Système de gestion de carrefour ****\n\n\n");
+    title();
 
     Carrefour *carrefours[4];  // Tableau de pointeur sur carrefour.
     Vehicule *vehicules[10]; // Tableau de pointeur sur véhicule.

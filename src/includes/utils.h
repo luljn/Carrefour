@@ -6,6 +6,7 @@
 
 
 
+void title(void);
 void genererCarrefours(Carrefour *carrefours[]);
 void genererVehicules(Vehicule *vehicules[]);
 

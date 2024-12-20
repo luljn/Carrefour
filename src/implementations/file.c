@@ -27,7 +27,7 @@ void ajouter(File* file, Vehicule *vehicule){
     /* Création du nouvel élément */
     Vehicule *nouveau = malloc(sizeof(*nouveau));
     if (file == NULL || nouveau == NULL){
-        
+
         exit(EXIT_FAILURE);
     }
 
@@ -40,4 +40,15 @@ void ajouter(File* file, Vehicule *vehicule){
 
 void supprimer(File* file){
     
+    if (file == NULL){
+
+        exit(EXIT_FAILURE);
+    }
+
+    if (file->premier != NULL){
+
+        Vehicule *aSupprimer = file->premier;
+        file->premier = file->premier->suivant;
+        free(aSupprimer);
+    }
 }

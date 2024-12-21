@@ -52,3 +52,21 @@ void supprimer(File* file){
         free(aSupprimer);
     }
 }
+
+void afficherFile(File* file){
+
+    if (file == NULL){
+
+        exit(EXIT_FAILURE);
+    }
+
+    Vehicule *actuel = file->premier;
+
+    while(actuel != NULL){
+
+        afficherCaracteristiquesVehicule(actuel);
+        actuel = actuel->suivant;
+    }
+    
+    printf("NULL\n");
+}

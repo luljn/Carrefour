@@ -13,6 +13,7 @@ struct File
 File* initialisation();
 void ajouter(File* file, Vehicule *vehicule);
 void supprimer(File* file);
+void afficherFile(File* file);
 
 
 

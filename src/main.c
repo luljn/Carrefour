@@ -36,6 +36,8 @@ int main(void){
         ajouter(file, vehicules[i]);
     }
 
+    afficherFile(file);
+
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){
 

@@ -10,12 +10,12 @@ File* initialisation(){
     File *file = malloc(sizeof(*file));
     Vehicule *vehicule = malloc(sizeof(*vehicule));
 
-    if (file == NULL || vehicule == NULL){
+    if(file == NULL || vehicule == NULL){
 
         exit(EXIT_FAILURE);
     }
 
-    vehicule->id = 0;
+    *vehicule = initialiserVehicule(0, "voiture", 30.0, "Theater");
     vehicule->suivant = NULL;
     file->premier = vehicule;
 
@@ -26,7 +26,7 @@ void ajouter(File* file, Vehicule *vehicule){
 
     /* Création du nouvel élément */
     Vehicule *nouveau = malloc(sizeof(*nouveau));
-    if (file == NULL || nouveau == NULL){
+    if(file == NULL || nouveau == NULL){
 
         exit(EXIT_FAILURE);
     }
@@ -40,12 +40,12 @@ void ajouter(File* file, Vehicule *vehicule){
 
 void supprimer(File* file){
     
-    if (file == NULL){
+    if(file == NULL){
 
         exit(EXIT_FAILURE);
     }
 
-    if (file->premier != NULL){
+    if(file->premier != NULL){
 
         Vehicule *aSupprimer = file->premier;
         file->premier = file->premier->suivant;

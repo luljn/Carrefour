@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "includes/carrefour.h"
+#include "includes/file.h"
 #include "includes/serveur.h"
 #include "includes/utils.h"
 #include "includes/vehicule.h"
@@ -14,6 +15,9 @@ int main(void){
     Carrefour *carrefours[4];  // Tableau de pointeur sur carrefour.
     Vehicule *vehicules[10]; // Tableau de pointeur sur véhicule.
 
+    File *file;
+    file = initialisation();
+
     genererCarrefours(carrefours);
     genererVehicules(vehicules);
 
@@ -22,9 +26,14 @@ int main(void){
         afficherCaracteristiquesCarrefour(carrefours[i]);
     }
 
+    // for(int i = 0; i<=9; i++){
+
+    //     afficherCaracteristiquesVehicule(vehicules[i]);
+    // }
+
     for(int i = 0; i<=9; i++){
 
-        afficherCaracteristiquesVehicule(vehicules[i]);
+        ajouter(file, vehicules[i]);
     }
 
     // Libération de la mémoire dynamique.

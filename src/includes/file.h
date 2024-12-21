@@ -11,7 +11,7 @@ struct File
 };
 
 File* initialisation();
-void ajouter(File* file, Vehicule vehicule);
+void ajouter(File* file, Vehicule *vehicule);
 void supprimer(File* file);
 
 

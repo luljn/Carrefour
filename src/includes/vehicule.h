@@ -3,6 +3,8 @@
 
 
 
+extern int compteurVehicule;  // Compteur du nombre total de véhicules créés (utilisé pour avoir un id unique pour chaque véhicule).
+
 typedef struct Vehicule Vehicule;
 struct Vehicule
 {

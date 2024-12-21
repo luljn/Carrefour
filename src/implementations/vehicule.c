@@ -5,6 +5,8 @@
 
 
 
+int compteurVehicule = 0;
+
 Vehicule initialiserVehicule(int id, char type[100], float vitesse, char destination[100]){
 
     Vehicule *vehicule = malloc(sizeof(Vehicule));
@@ -12,6 +14,7 @@ Vehicule initialiserVehicule(int id, char type[100], float vitesse, char destina
     strcpy(vehicule->type, type);
     vehicule->vitesse = vitesse;
     strcpy(vehicule->destination, destination);
+    compteurVehicule++;
 
     return *vehicule;
 }

@@ -15,7 +15,7 @@ File* initialiserFile(){
         exit(EXIT_FAILURE);
     }
 
-    *vehicule = initialiserVehicule(0, "voiture", 30.0, "Theater");
+    *vehicule = initialiserVehicule(compteurVehicule, "voiture", 30.0, "Theater");
     vehicule->suivant = NULL;
     file->premier = vehicule;
 

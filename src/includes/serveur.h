@@ -12,6 +12,8 @@ struct Serveur
     File* file_np;  // File des véhicules non prioritaires.
 };
 
+Serveur initialiserServeur();
+
 
 
 #endif

@@ -12,12 +12,13 @@ int main(void){
 
     title();
 
-    Carrefour *carrefours[4];  // Tableau de pointeur sur carrefour.
-    Vehicule *vehicules[10]; // Tableau de pointeur sur véhicule.
-
+    Serveur *serveur = malloc(sizeof(Serveur));          // Serveur central.
+    Carrefour *carrefours[4];                            // Tableau de pointeur sur carrefour.
+    Vehicule *vehicules[10];                             // Tableau de pointeur sur véhicule.
     File *file;
-    file = initialiserFile();
 
+    *serveur = initialiserServeur();
+    file = initialiserFile();
     genererCarrefours(carrefours);
     genererVehicules(vehicules);
 
@@ -42,6 +43,8 @@ int main(void){
     }
 
     afficherFile(file);
+    afficherFile(serveur->file_np);
+    afficherFile(serveur->file_p);
 
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){

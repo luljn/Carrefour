@@ -4,13 +4,14 @@
 #include "vehicule.h"
 
 
+
 typedef struct File File;
 struct File
 {
     Vehicule *premier;
 };
 
-File* initialisation();
+File* initialiserFile();
 void ajouter(File* file, Vehicule *vehicule);
 void supprimer(File* file);
 void afficherFile(File* file);

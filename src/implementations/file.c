@@ -5,7 +5,7 @@
 
 
 
-File* initialisation(){
+File* initialiserFile(){
 
     File *file = malloc(sizeof(*file));
     Vehicule *vehicule = malloc(sizeof(*vehicule));
@@ -67,6 +67,6 @@ void afficherFile(File* file){
         afficherCaracteristiquesVehicule(actuel);
         actuel = actuel->suivant;
     }
-    
+
     printf("NULL\n");
 }

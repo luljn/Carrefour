@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../includes/carrefour.h"
+#include "../includes/file.h"
 
 
 
@@ -9,6 +11,7 @@ Carrefour initialiserCarrefour(int id, int compteur, int max){
     carrefour->id = id;
     carrefour->compteur = compteur;
     carrefour->max = max;
+    carrefour->file = initialiserFile();
 
     return *carrefour;
 }

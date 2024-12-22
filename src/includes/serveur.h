@@ -13,6 +13,8 @@ struct Serveur
 };
 
 Serveur initialiserServeur();
+void serveurEnvoyerDonnees();       // Pour envoyer des données.
+void serveurRecevoirDonnees();      // Pour recevoir des données.
 
 
 

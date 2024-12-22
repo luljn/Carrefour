@@ -26,3 +26,11 @@ void afficherCaracteristiquesVehicule(Vehicule* vehicule){
     printf("Véhicule->Vitesse : %f km/h\n", vehicule->vitesse);
     printf("Véhicule->Destination : %s\n\n", vehicule->destination);
 }
+
+void vehiculeEnvoyerDonnees(Serveur* serveur){
+
+}
+
+void vehiculeRecevoirDonnees(Serveur* serveur){
+
+}

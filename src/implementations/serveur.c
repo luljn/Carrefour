@@ -15,3 +15,11 @@ Serveur initialiserServeur(){
 
     return *serveur;
 }
+
+void serveurEnvoyerDonnees(){
+
+}
+
+void serveurRecevoirDonnees(){
+
+}

@@ -59,10 +59,6 @@ void ajouter(File* file, Vehicule *vehicule){
             ajouter(nouvelle, nouveau);
         }
     }
-
-    /* Insertion de l'élément au début de la liste */
-    // nouveau->suivant = file->premier;
-    // file->premier = nouveau;
 }
 
 // Suppression du 1er élément de la liste.
@@ -103,4 +99,21 @@ void afficherFile(File* file){
     }
 
     printf("NULL\n\n");
+}
+
+// Retourne le nombre d'éléments de la liste.
+int longueurFile(File* file){
+
+    if(file->premier == NULL){
+
+        return 0;
+    }
+
+    else{
+
+        File* nouvelle;
+        nouvelle = initialiserFile();
+        nouvelle->premier = file->premier->suivant;
+        return 1 + longueurFile(nouvelle);
+    }
 }

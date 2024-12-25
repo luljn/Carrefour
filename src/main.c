@@ -43,6 +43,8 @@ int main(void){
     }
 
     afficherFile(file);
+    int longueur = longueurFile(file);
+    printf("\nLongueur de la file : %d\n\n", longueur);
     afficherFile(serveur->file_np);
     afficherFile(serveur->file_p);
 

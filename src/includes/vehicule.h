@@ -1,7 +1,7 @@
 #ifndef DEF_VEHICULE
 #define DEF_VEHICULE
 
-#include "serveur.h"
+// #include "serveur.h"
 
 
 
@@ -19,8 +19,8 @@ struct Vehicule
 
 Vehicule initialiserVehicule(int id, char type[100], float vitesse, char destination[100]);
 void afficherCaracteristiquesVehicule(Vehicule* vehicule);
-void vehiculeEnvoyerDonnees(Serveur* serveur);  // Pour envoyer des données au serveur central.
-void vehiculeRecevoirDonnees(Serveur* serveur); // Pour recevoir des données du serveur central.
+// void vehiculeEnvoyerDonnees(Serveur* serveur);  // Pour envoyer des données au serveur central.
+// void vehiculeRecevoirDonnees(Serveur* serveur); // Pour recevoir des données du serveur central.
 
 
 

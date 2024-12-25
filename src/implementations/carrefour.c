@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../includes/carrefour.h"
+#include "../includes/file.h"
 
 
 
@@ -9,6 +11,7 @@ Carrefour initialiserCarrefour(int id, int compteur, int max){
     carrefour->id = id;
     carrefour->compteur = compteur;
     carrefour->max = max;
+    carrefour->file = initialiserFile();
 
     return *carrefour;
 }
@@ -18,4 +21,20 @@ void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
     printf("Carrefour->Id : %d\n", carrefour->id);
     printf("Carrefour->Nombre actuels de vehicules accueillis : %d\n", carrefour->compteur);
     printf("Carrefour->Nombre max de vehicules : %d\n\n", carrefour->max);
+}
+
+void enregistrerDonnees(char cheminFichier[50]){
+
+    FILE *fichier = fopen(cheminFichier, "a");
+
+    if(fichier != NULL){
+
+        fprintf(fichier, "Nouvelle ligne\n");
+        fclose(fichier);
+    } 
+    
+    else{
+
+        perror("Erreur d'ouverture du fichier");
+    }
 }

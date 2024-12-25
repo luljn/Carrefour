@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "includes/carrefour.h"
+#include "includes/file.h"
 #include "includes/serveur.h"
 #include "includes/utils.h"
 #include "includes/vehicule.h"
@@ -11,9 +12,13 @@ int main(void){
 
     title();
 
-    Carrefour *carrefours[4];  // Tableau de pointeur sur carrefour.
-    Vehicule *vehicules[10]; // Tableau de pointeur sur véhicule.
+    Serveur *serveur = malloc(sizeof(Serveur));          // Serveur central.
+    Carrefour *carrefours[4];                            // Tableau de pointeur sur carrefour.
+    Vehicule *vehicules[10];                             // Tableau de pointeur sur véhicule.
+    File *file;
 
+    *serveur = initialiserServeur();
+    file = initialiserFile();
     genererCarrefours(carrefours);
     genererVehicules(vehicules);
 
@@ -22,10 +27,31 @@ int main(void){
         afficherCaracteristiquesCarrefour(carrefours[i]);
     }
 
+    for(int i = 0; i<=3; i++){
+
+        afficherFile(carrefours[i]->file);
+    }
+
+    // for(int i = 0; i<=9; i++){
+
+    //     afficherCaracteristiquesVehicule(vehicules[i]);
+    // }
+
     for(int i = 0; i<=9; i++){
 
-        afficherCaracteristiquesVehicule(vehicules[i]);
+        ajouter(file, vehicules[i]);
     }
+
+    afficherFile(file);
+    int longueur = longueurFile(file);
+    printf("\nLongueur de la file : %d\n\n", longueur);
+    afficherFile(serveur->file_np);
+    afficherFile(serveur->file_p);
+
+    enregistrerDonnees("../logs/carrefour1.txt");
+
+    supprimer(file);
+    afficherFile(file);
 
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){
@@ -33,7 +59,7 @@ int main(void){
         free(carrefours[i]);
     }
 
-    for(int i = 0; i<=9; i++){
+    for(int i = 1; i<=9; i++){
 
         free(vehicules[i]);
     }

@@ -22,3 +22,19 @@ void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
     printf("Carrefour->Nombre actuels de vehicules accueillis : %d\n", carrefour->compteur);
     printf("Carrefour->Nombre max de vehicules : %d\n\n", carrefour->max);
 }
+
+void enregistrerDonnees(){
+
+    FILE *fichier = fopen("../logs/carrefour1.txt", "w");
+
+    if(fichier != NULL){
+
+        fprintf(fichier, "Nouvelle ligne\n");
+        fclose(fichier);
+    } 
+    
+    else{
+
+        perror("Erreur d'ouverture du fichier");
+    }
+}

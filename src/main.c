@@ -48,13 +48,16 @@ int main(void){
 
     enregistrerDonnees("../logs/carrefour1.txt");
 
+    supprimer(file);
+    afficherFile(file);
+
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){
 
         free(carrefours[i]);
     }
 
-    for(int i = 0; i<=9; i++){
+    for(int i = 1; i<=9; i++){
 
         free(vehicules[i]);
     }

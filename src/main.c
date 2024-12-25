@@ -46,6 +46,8 @@ int main(void){
     afficherFile(serveur->file_np);
     afficherFile(serveur->file_p);
 
+    // enregistrerDonnees();
+
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){
 

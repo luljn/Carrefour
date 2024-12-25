@@ -22,7 +22,3 @@ void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
     printf("Carrefour->Nombre actuels de vehicules accueillis : %d\n", carrefour->compteur);
     printf("Carrefour->Nombre max de vehicules : %d\n\n", carrefour->max);
 }
-
-void enregistrerDonnees(){
-    
-}

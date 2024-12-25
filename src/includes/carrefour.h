@@ -16,7 +16,6 @@ struct Carrefour
 
 Carrefour initialiserCarrefour(int id, int compteur, int max);
 void afficherCaracteristiquesCarrefour(Carrefour* carrefour);
-void enregistrerDonnees();
 
 
 

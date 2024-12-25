@@ -46,7 +46,7 @@ int main(void){
     afficherFile(serveur->file_np);
     afficherFile(serveur->file_p);
 
-    enregistrerDonnees();
+    enregistrerDonnees("../logs/carrefour1.txt");
 
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){

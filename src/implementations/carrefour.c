@@ -23,9 +23,9 @@ void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
     printf("Carrefour->Nombre max de vehicules : %d\n\n", carrefour->max);
 }
 
-void enregistrerDonnees(){
+void enregistrerDonnees(char cheminFichier[50]){
 
-    FILE *fichier = fopen("../logs/carrefour1.txt", "w");
+    FILE *fichier = fopen(cheminFichier, "a");
 
     if(fichier != NULL){
 

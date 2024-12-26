@@ -48,10 +48,12 @@ int main(void){
     afficherFile(serveur->file_np);
     afficherFile(serveur->file_p);
 
-    enregistrerDonnees("../logs/carrefour1.txt");
+    // enregistrerDonnees("../logs/carrefour1.txt");
 
     supprimer(file);
     afficherFile(file);
+    longueur = longueurFile(file);
+    printf("\nLongueur de la file : %d\n\n", longueur);
 
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){

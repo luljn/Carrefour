@@ -2,6 +2,7 @@
 #define DEF_CARREFOUR
 
 #include "file.h"
+#include "vehicule.h"
 
 
 
@@ -16,7 +17,7 @@ struct Carrefour
 
 Carrefour initialiserCarrefour(int id, int compteur, int max);
 void afficherCaracteristiquesCarrefour(Carrefour* carrefour);
-void enregistrerDonnees(char cheminFichier[50]);
+void enregistrerDonnees(char cheminFichier[50], Vehicule* vehicule, char movement[7]); // Movement ici représente l'entrée ou la sortie du camion du carrefour.
 
 
 

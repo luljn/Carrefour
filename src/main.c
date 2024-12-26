@@ -48,8 +48,17 @@ int main(void){
     afficherFile(serveur->file_np);
     afficherFile(serveur->file_p);
 
-    // enregistrerDonnees("../logs/carrefour1.txt");
+    enregistrerDonnees("../logs/carrefour1.txt", file->premier, "entree");
 
+    enregistrerDonnees("../logs/carrefour1.txt", file->premier, "sortie");
+    supprimer(file);
+    afficherFile(file);
+    longueur = longueurFile(file);
+    printf("\nLongueur de la file : %d\n\n", longueur);
+
+    enregistrerDonnees("../logs/carrefour1.txt", file->premier, "entree");
+
+    enregistrerDonnees("../logs/carrefour1.txt", file->premier, "sortie");
     supprimer(file);
     afficherFile(file);
     longueur = longueurFile(file);
@@ -61,7 +70,7 @@ int main(void){
         free(carrefours[i]);
     }
 
-    for(int i = 1; i<=9; i++){
+    for(int i = 2; i<=9; i++){
 
         free(vehicules[i]);
     }

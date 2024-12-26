@@ -1,18 +1,8 @@
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
-Nouvelle ligne
+Le véhicule d'id '0' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '0' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '1' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '1' et de type 'voiture' est sorti du carrefour.
+

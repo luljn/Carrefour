@@ -8,22 +8,17 @@
 File* initialiserFile(){ // À l'initialisation la file est vide.
 
     File *file = malloc(sizeof(*file));
-    // Vehicule *vehicule = malloc(sizeof(*vehicule));
-
-    // if(file == NULL || vehicule == NULL){
     if(file == NULL){
 
         exit(EXIT_FAILURE);
     }
 
-    // *vehicule = initialiserVehicule(compteurVehicule, "voiture", 30.0, "Theater");
-    // vehicule->suivant = NULL;
     file->premier = NULL;
 
     return file;
 }
 
-// Ajout d'un nouvel élément à la fin de la liste.
+// Ajout d'un nouvel élément à la fin de la file.
 void ajouter(File* file, Vehicule *vehicule){
 
     /* Création du nouvel élément */
@@ -61,7 +56,7 @@ void ajouter(File* file, Vehicule *vehicule){
     }
 }
 
-// Suppression du 1er élément de la liste.
+// Suppression du 1er élément de la file.
 void supprimer(File* file){
     
     if(file == NULL){
@@ -77,7 +72,7 @@ void supprimer(File* file){
     }
 }
 
-// Affichage de tous les éléments de la liste (du 1er au dernier).
+// Affichage de tous les éléments de la file (du 1er au dernier).
 void afficherFile(File* file){
 
     if (file == NULL){
@@ -101,7 +96,7 @@ void afficherFile(File* file){
     printf("NULL\n\n");
 }
 
-// Retourne le nombre d'éléments de la liste.
+// Retourne le nombre d'éléments de la file.
 int longueurFile(File* file){
 
     if(file->premier == NULL){
@@ -115,5 +110,22 @@ int longueurFile(File* file){
         nouvelle = initialiserFile();
         nouvelle->premier = file->premier->suivant;
         return 1 + longueurFile(nouvelle);
+    }
+}
+
+// Vider entièrement une file.
+void viderFile(File* file){
+
+    if (file == NULL){
+
+        exit(EXIT_FAILURE);
+    }
+
+    Vehicule *actuel = file->premier;
+
+    while(actuel != NULL){
+
+        supprimer(file);
+        actuel = actuel->suivant;
     }
 }

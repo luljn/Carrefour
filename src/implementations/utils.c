@@ -49,7 +49,14 @@ void genererVehiculesNonPrioritaires(File* file, int nombre){
     for(int i = 0; i<nombre; i++){
 
         Vehicule* vehicule = malloc(sizeof(Vehicule));
-        *vehicule = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
+        if(i%2 == 0 && i%3 != 0)
+            *vehicule = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
+        else if(i%3 == 0 && i%2 != 0)
+            *vehicule = initialiserVehicule(compteurVehicule, "camion", 0, 30.0, "Carrefour 1");
+        else if(i%2 == 0 && i%3 == 0)
+            *vehicule = initialiserVehicule(compteurVehicule, "moto", 0, 30.0, "Carrefour 1");
+        else
+            *vehicule = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
         ajouter(file, vehicule);
     }
 }

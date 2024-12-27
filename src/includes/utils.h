@@ -9,7 +9,8 @@
 
 void title(void);
 void genererCarrefours(Carrefour* carrefours[]);
-void genererVehicules(File* file, int nombre);
+void genererVehiculesPrioritaires(File* file, int nombre);
+void genererVehiculesNonPrioritaires(File* file, int nombre);
 
 
 

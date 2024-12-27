@@ -21,7 +21,7 @@ int main(void){
     file = initialiserFile();
     genererCarrefours(carrefours);
     // genererVehicules(vehicules);
-    genererVehicules(file, 1);
+    genererVehiculesNonPrioritaires(file, 1);
 
     for(int i = 0; i<=3; i++){
 

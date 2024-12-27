@@ -27,18 +27,7 @@ void genererCarrefours(Carrefour *carrefours[]){
     }
 }
 
-void genererVehicules(File* file, int nombre){
-
-    // for (int i = 0; i<nombre; i++){
-
-    //     vehicules[i] = malloc(sizeof(Vehicule));
-
-    //     if (vehicules[i] == NULL){
-
-    //         perror("erreur d'allocation dynamique avec malloc");
-    //         exit(EXIT_FAILURE);
-    //     }
-    // }
+void genererVehiculesPrioritaires(File* file, int nombre){
 
     for(int i = 0; i<nombre; i++){
 
@@ -50,7 +39,17 @@ void genererVehicules(File* file, int nombre){
         else if(i%2 == 0 && i%3 == 0)
             *vehicule = initialiserVehicule(compteurVehicule, "police", 1, 35.0, "Carrefour 1");
         else
-            *vehicule = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
+            *vehicule = initialiserVehicule(compteurVehicule, "voiture du maire", 1, 30.0, "Carrefour 1");
+        ajouter(file, vehicule);
+    }
+}
+
+void genererVehiculesNonPrioritaires(File* file, int nombre){
+
+    for(int i = 0; i<nombre; i++){
+
+        Vehicule* vehicule = malloc(sizeof(Vehicule));
+        *vehicule = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
         ajouter(file, vehicule);
     }
 }

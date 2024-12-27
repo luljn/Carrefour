@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../includes/file.h"
 #include "../includes/utils.h"
 #include "../includes/vehicule.h"
 
@@ -26,28 +27,30 @@ void genererCarrefours(Carrefour *carrefours[]){
     }
 }
 
-void genererVehicules(Vehicule *vehicules[]){
+void genererVehicules(File* file, int nombre){
 
-    for (int i = 0; i<10; i++){
+    // for (int i = 0; i<nombre; i++){
 
-        vehicules[i] = malloc(sizeof(Vehicule));
+    //     vehicules[i] = malloc(sizeof(Vehicule));
 
-        if (vehicules[i] == NULL){
+    //     if (vehicules[i] == NULL){
 
-            perror("erreur d'allocation dynamique avec malloc");
-            exit(EXIT_FAILURE);
-        }
-    }
+    //         perror("erreur d'allocation dynamique avec malloc");
+    //         exit(EXIT_FAILURE);
+    //     }
+    // }
 
-    for(int i = 0; i<=9; i++){
+    for(int i = 0; i<nombre; i++){
 
+        Vehicule* vehicule = malloc(sizeof(Vehicule));
         if(i%2 == 0 && i%3 != 0)
-            *vehicules[i] = initialiserVehicule(compteurVehicule, "ambulance", 1, 40.0, "Carrefour 1");
+            *vehicule = initialiserVehicule(compteurVehicule, "ambulance", 1, 40.0, "Carrefour 1");
         else if(i%3 == 0 && i%2 != 0)
-            *vehicules[i] = initialiserVehicule(compteurVehicule, "camion de pompiers", 1, 50.0, "Carrefour 1");
+            *vehicule = initialiserVehicule(compteurVehicule, "camion de pompiers", 1, 50.0, "Carrefour 1");
         else if(i%2 == 0 && i%3 == 0)
-            *vehicules[i] = initialiserVehicule(compteurVehicule, "police", 1, 35.0, "Carrefour 1");
+            *vehicule = initialiserVehicule(compteurVehicule, "police", 1, 35.0, "Carrefour 1");
         else
-            *vehicules[i] = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
+            *vehicule = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
+        ajouter(file, vehicule);
     }
 }

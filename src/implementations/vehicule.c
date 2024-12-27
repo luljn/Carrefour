@@ -8,6 +8,7 @@
 
 int compteurVehicule = 0;
 
+// Initialiser un nouveau véhicule.
 Vehicule initialiserVehicule(int id, char type[100], int estPrioritaire, float vitesse, char destination[100]){
 
     Vehicule *vehicule = malloc(sizeof(Vehicule));
@@ -21,6 +22,7 @@ Vehicule initialiserVehicule(int id, char type[100], int estPrioritaire, float v
     return *vehicule;
 }
 
+// Afficher les caractéristiques d'un véhicule.
 void afficherCaracteristiquesVehicule(Vehicule* vehicule){
 
     printf("Véhicule->Id : %d\n", vehicule->id);

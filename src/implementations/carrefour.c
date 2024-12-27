@@ -7,6 +7,7 @@
 
 
 
+// Initialiser un nouveau carrefour.
 Carrefour initialiserCarrefour(int id, int compteur, int max){
 
     Carrefour *carrefour = malloc(sizeof(Carrefour));
@@ -18,6 +19,7 @@ Carrefour initialiserCarrefour(int id, int compteur, int max){
     return *carrefour;
 }
 
+// Afficher les caractéristiques d'un carrefour.
 void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
 
     printf("Carrefour->Id : %d\n", carrefour->id);
@@ -25,6 +27,7 @@ void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
     printf("Carrefour->Nombre max de vehicules : %d\n\n", carrefour->max);
 }
 
+// Enregistrer les données de circulation d'un carrefour.
 void enregistrerDonnees(char cheminFichier[50], Vehicule* vehicule, char movement[7]){
 
     FILE *fichier = fopen(cheminFichier, "a");

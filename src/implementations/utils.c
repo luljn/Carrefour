@@ -6,8 +6,10 @@
 
 
 
+// Afficher le titre du programme à l'éxécution.
 void title(void){ system("clear"); printf("\n\n\t\t\t**** Système de gestion de carrefour ****\n\n\n"); }
 
+// Générer les 4 carrefours.
 void genererCarrefours(Carrefour *carrefours[]){
 
     for (int i = 0; i<4; i++){
@@ -27,6 +29,7 @@ void genererCarrefours(Carrefour *carrefours[]){
     }
 }
 
+// Générer des véhicules prioritaires.
 void genererVehiculesPrioritaires(File* file, int nombre){
 
     for(int i = 0; i<nombre; i++){
@@ -44,6 +47,7 @@ void genererVehiculesPrioritaires(File* file, int nombre){
     }
 }
 
+// Générer des véhicules non prioritaires.
 void genererVehiculesNonPrioritaires(File* file, int nombre){
 
     for(int i = 0; i<nombre; i++){

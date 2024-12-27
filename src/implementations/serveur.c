@@ -5,6 +5,7 @@
 
 
 
+// Initialiser le serveur central.
 Serveur initialiserServeur(){
 
     Serveur *serveur = malloc(sizeof(Serveur));

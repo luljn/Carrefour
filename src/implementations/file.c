@@ -5,7 +5,8 @@
 
 
 
-File* initialiserFile(){ // À l'initialisation la file est vide.
+// Initialiser une nouvelle file vide.
+File* initialiserFile(){
 
     File *file = malloc(sizeof(*file));
     if(file == NULL){
@@ -18,7 +19,7 @@ File* initialiserFile(){ // À l'initialisation la file est vide.
     return file;
 }
 
-// Ajout d'un nouvel élément à la fin de la file.
+// Ajouter un nouvel élément à la fin d'une file.
 void ajouter(File* file, Vehicule *vehicule){
 
     /* Création du nouvel élément */
@@ -56,7 +57,7 @@ void ajouter(File* file, Vehicule *vehicule){
     }
 }
 
-// Suppression du 1er élément de la file.
+// Supprimer le 1er élément d'une file.
 void supprimer(File* file){
     
     if(file == NULL){
@@ -72,7 +73,7 @@ void supprimer(File* file){
     }
 }
 
-// Affichage de tous les éléments de la file (du 1er au dernier).
+// Afficher tous les éléments d'une file (du 1er au dernier).
 void afficherFile(File* file){
 
     if (file == NULL){
@@ -93,10 +94,10 @@ void afficherFile(File* file){
         actuel = actuel->suivant;
     }
 
-    printf("NULL\n\n");
+    printf("\n\n");
 }
 
-// Retourne le nombre d'éléments de la file.
+// Compter le nombre d'éléments d'une file.
 int longueurFile(File* file){
 
     if(file->premier == NULL){

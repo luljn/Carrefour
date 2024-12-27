@@ -1,2 +1,5 @@
 # Fichiers executables.
-executable/*
+executable/main
+
+# Fichiers de compilation.
+build/*.o

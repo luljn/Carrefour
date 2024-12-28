@@ -11,6 +11,7 @@ void title(void);
 void genererCarrefours(Carrefour* carrefours[]);
 void genererVehiculesPrioritaires(File* file, int nombre);
 void genererVehiculesNonPrioritaires(File* file, int nombre);
+void simulationSystemeDeCirculation(Carrefour* carrefours[4]);
 
 
 

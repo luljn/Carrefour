@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "includes/carrefour.h"
 #include "includes/file.h"
 #include "includes/serveur.h"
@@ -11,34 +12,49 @@
 // Fonction principale.
 int main(void){
 
-    title();
-
     Serveur *serveur = malloc(sizeof(Serveur));          // Serveur central.
     Carrefour *carrefours[4];                            // Tableau de pointeur sur carrefour.
 
     *serveur = initialiserServeur();
     genererCarrefours(carrefours);
-    genererVehiculesPrioritaires(serveur->file_p, 10);
-    genererVehiculesNonPrioritaires(serveur->file_np, 10);
+    genererVehiculesPrioritaires(carrefours[0]->file, 10);
+    genererVehiculesNonPrioritaires(carrefours[3]->file, 10);
 
-    for(int i = 0; i<=3; i++){
+    while(1){
 
-        afficherCaracteristiquesCarrefour(carrefours[i]);
+        title();
+        simulationSystemeDeCirculation(carrefours);
+
+        // Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+        // vehicule1 = carrefours[0]->file->premier;
+        // ajouter(carrefours[1]->file, vehicule1);
+        supprimer(carrefours[0]->file);
+
+        // Vehicule* vehicule2 = malloc(sizeof(Vehicule));
+        // vehicule2 = carrefours[3]->file->premier;
+        // ajouter(carrefours[2]->file, vehicule2);
+        supprimer(carrefours[3]->file);
+
+        sleep(1);
+        if(carrefours[0]->compteur == 0 && carrefours[3]->compteur == 0){
+
+            break;
+        }
     }
 
-    for(int i = 0; i<=3; i++){
+    // for(int i = 0; i<=3; i++){
 
-        printf("File des véhicules présents au Carrefour %d.\n", i+1);
-        afficherFile(carrefours[i]->file);
-    }
+    //     printf("File des véhicules présents au Carrefour %d.\n", i+1);
+    //     afficherFile(carrefours[i]->file);
+    // }
 
-    printf("***File des véhicules prioritaires en attente***\n");
-    afficherFile(serveur->file_p);
-    printf("Longueur de la file des véhicules prioritaires en attente : %d.\n\n\n", longueurFile(serveur->file_p));
+    // printf("***File des véhicules prioritaires en attente***\n");
+    // afficherFile(serveur->file_p);
+    // printf("Longueur de la file des véhicules prioritaires en attente : %d.\n\n\n", longueurFile(serveur->file_p));
 
-    printf("***File des véhicules non prioritaires en attente***\n");
-    afficherFile(serveur->file_np);
-    printf("Longueur de la file des véhicules non prioritaires en attente : %d.\n\n\n", longueurFile(serveur->file_np));
+    // printf("***File des véhicules non prioritaires en attente***\n");
+    // afficherFile(serveur->file_np);
+    // printf("Longueur de la file des véhicules non prioritaires en attente : %d.\n\n\n", longueurFile(serveur->file_np));
 
     // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){

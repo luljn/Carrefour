@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../includes/carrefour.h"
 #include "../includes/file.h"
 #include "../includes/utils.h"
 #include "../includes/vehicule.h"
@@ -7,7 +8,7 @@
 
 
 // Afficher le titre du programme à l'éxécution.
-void title(void){ system("clear"); printf("\n\n\t\t\t**** Système de gestion de carrefour ****\n\n\n"); }
+void title(void){ system("clear"); printf("\n\n\t\t\t\t\t\t\t\t\t**** Système de gestion de carrefour ****\n\n\n"); }
 
 // Générer les 4 carrefours.
 void genererCarrefours(Carrefour *carrefours[]){
@@ -62,5 +63,14 @@ void genererVehiculesNonPrioritaires(File* file, int nombre){
         else
             *vehicule = initialiserVehicule(compteurVehicule, "voiture", 0, 30.0, "Carrefour 1");
         ajouter(file, vehicule);
+    }
+}
+
+// Fonction de simulation du système de circulation.
+void simulationSystemeDeCirculation(Carrefour* carrefours[4]){
+
+    for(int i = 0; i<=3; i++){
+
+        afficherCaracteristiquesCarrefour(carrefours[i]);
     }
 }

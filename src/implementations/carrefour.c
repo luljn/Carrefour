@@ -22,9 +22,10 @@ Carrefour initialiserCarrefour(int id, int compteur, int max){
 // Afficher les caractéristiques d'un carrefour.
 void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
 
-    printf("Carrefour->Id : %d\n", carrefour->id);
-    printf("Carrefour->Nombre actuels de vehicules accueillis : %d\n", carrefour->compteur);
-    printf("Carrefour->Nombre max de vehicules : %d\n\n", carrefour->max);
+    carrefour->compteur = longueurFile(carrefour->file);
+    printf("\t\t\t\t\t\tCarrefour->Id : %d\n", carrefour->id);
+    printf("\t\t\t\t\t\tCarrefour->Nombre actuels de vehicules accueillis : %d\n", carrefour->compteur);
+    printf("\t\t\t\t\t\tCarrefour->Nombre max de vehicules : %d\n\n", carrefour->max);
 }
 
 // Enregistrer les données de circulation d'un carrefour.

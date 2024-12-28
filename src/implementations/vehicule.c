@@ -37,6 +37,16 @@ void afficherCaracteristiquesVehicule(Vehicule* vehicule){
     printf("Véhicule->Destination : %s\n\n", vehicule->destination);
 }
 
+// Dupliquer un véhicule (fonctionne sur le même principe qu'un constructeur par recopie).
+void dupliquerVehicule(Vehicule* vehicule1, Vehicule* vehicule2){
+
+    vehicule2->id = vehicule1->id;
+    strcpy(vehicule2->type, vehicule1->type);
+    vehicule2->estPrioritaire = vehicule1->estPrioritaire;
+    vehicule2->vitesse = vehicule1->vitesse;
+    strcpy(vehicule2->destination, vehicule1->destination);
+}
+
 void vehiculeEnvoyerDonnees(Serveur* serveur){
 
 }

@@ -25,14 +25,18 @@ int main(void){
         title();
         simulationSystemeDeCirculation(carrefours);
 
-        // Vehicule* vehicule1 = malloc(sizeof(Vehicule));
-        // vehicule1 = carrefours[0]->file->premier;
-        // ajouter(carrefours[1]->file, vehicule1);
+        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+        if(carrefours[0]->file->premier != NULL){
+            dupliquerVehicule(carrefours[0]->file->premier, vehicule1);
+        }
+        ajouter(carrefours[1]->file, vehicule1);
         supprimer(carrefours[0]->file);
 
-        // Vehicule* vehicule2 = malloc(sizeof(Vehicule));
-        // vehicule2 = carrefours[3]->file->premier;
-        // ajouter(carrefours[2]->file, vehicule2);
+        Vehicule* vehicule2 = malloc(sizeof(Vehicule));
+        if(carrefours[3]->file->premier != NULL){
+            dupliquerVehicule(carrefours[3]->file->premier, vehicule1);
+        }
+        ajouter(carrefours[2]->file, vehicule2);
         supprimer(carrefours[3]->file);
 
         sleep(1);

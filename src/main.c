@@ -17,8 +17,8 @@ int main(void){
 
     *serveur = initialiserServeur();
     genererCarrefours(carrefours);
-    genererVehiculesPrioritaires(carrefours[0]->file, 10);
-    genererVehiculesNonPrioritaires(carrefours[3]->file, 10);
+    genererVehiculesPrioritaires(serveur->file_p, 10);
+    genererVehiculesNonPrioritaires(serveur->file_np, 10);
 
     simulationSystemeDeCirculation(serveur, carrefours);
 
@@ -36,20 +36,22 @@ int main(void){
     // afficherFile(serveur->file_np);
     // printf("Longueur de la file des véhicules non prioritaires en attente : %d.\n\n\n", longueurFile(serveur->file_np));
 
-    // Libération de la mémoire dynamique.
-    for(int i = 0; i<=3; i++){
-
-        free(carrefours[i]);
-    }
-
+    /* Libération de la mémoire dynamique. */
     for(int i = 0; i<=3; i++){
 
         free(carrefours[i]->file);
     }
 
+    for(int i = 0; i<=3; i++){
+
+        free(carrefours[i]);
+    }
+
     viderFile(serveur->file_p);
     viderFile(serveur->file_np);
 
+    free(serveur->file_p);
+    free(serveur->file_np);
     free(serveur);
 
     printf("\n\n\n");

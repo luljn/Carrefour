@@ -68,6 +68,17 @@ void genererVehiculesNonPrioritaires(File* file, int nombre){
     }
 }
 
+// Déplacer un véhicule d'une file à une autre (de la file 'origine' vers la file 'arrivee').
+void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
+
+    // Vehicule* vehicule = malloc(sizeof(Vehicule));
+    if(origine->premier != NULL){
+        dupliquerVehicule(origine->premier, vehicule);
+    }
+    ajouter(arrivee, vehicule);
+    supprimer(origine);
+}
+
 // Fonction de simulation du système de circulation.
 void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
 
@@ -81,21 +92,24 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
         }
 
         Vehicule* vehicule1 = malloc(sizeof(Vehicule));
-        if(carrefours[0]->file->premier != NULL){
-            dupliquerVehicule(carrefours[0]->file->premier, vehicule1);
-        }
-        ajouter(carrefours[1]->file, vehicule1);
-        supprimer(carrefours[0]->file);
+        deplacerVehicule(vehicule1, serveur->file_p, carrefours[0]->file);
+        // if(serveur->file_p->premier != NULL){
+        //     dupliquerVehicule(serveur->file_p->premier, vehicule1);
+        // }
+        // ajouter(carrefours[0]->file, vehicule1);
+        // supprimer(serveur->file_p);
 
         Vehicule* vehicule2 = malloc(sizeof(Vehicule));
-        if(carrefours[3]->file->premier != NULL){
-            dupliquerVehicule(carrefours[3]->file->premier, vehicule1);
-        }
-        ajouter(carrefours[2]->file, vehicule2);
-        supprimer(carrefours[3]->file);
+        deplacerVehicule(vehicule2, serveur->file_np, carrefours[1]->file);
+        // if(serveur->file_np->premier != NULL){
+        //     dupliquerVehicule(serveur->file_np->premier, vehicule1);
+        // }
+        // ajouter(carrefours[1]->file, vehicule2);
+        // supprimer(serveur->file_np);
 
         sleep(1);
-        if(carrefours[0]->compteur == 0 && carrefours[3]->compteur == 0){
+        // if(longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
+        if(carrefours[0]->compteur == 10 && carrefours[1]->compteur == 10){
 
             break;
         }

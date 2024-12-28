@@ -12,29 +12,39 @@
 // Fonction principale.
 int main(void){
 
+    /* Initialisation des composants */
     Serveur *serveur = malloc(sizeof(Serveur));          // Serveur central.
     Carrefour *carrefours[4];                            // Tableau de pointeur sur carrefour.
+    char choix;
 
     *serveur = initialiserServeur();
     genererCarrefours(carrefours);
-    genererVehiculesPrioritaires(serveur->file_p, 10);
-    genererVehiculesNonPrioritaires(serveur->file_np, 10);
 
-    simulationSystemeDeCirculation(serveur, carrefours);
+    title();
+    choix = menu();
 
-    // for(int i = 0; i<=3; i++){
+    switch(choix){
 
-    //     printf("File des véhicules présents au Carrefour %d.\n", i+1);
-    //     afficherFile(carrefours[i]->file);
-    // }
-
-    // printf("***File des véhicules prioritaires en attente***\n");
-    // afficherFile(serveur->file_p);
-    // printf("Longueur de la file des véhicules prioritaires en attente : %d.\n\n\n", longueurFile(serveur->file_p));
-
-    // printf("***File des véhicules non prioritaires en attente***\n");
-    // afficherFile(serveur->file_np);
-    // printf("Longueur de la file des véhicules non prioritaires en attente : %d.\n\n\n", longueurFile(serveur->file_np));
+        case '1' :
+            genererVehiculesPrioritaires(serveur->file_p, 10);
+            genererVehiculesNonPrioritaires(serveur->file_np, 10);
+            simulationSystemeDeCirculation(serveur, carrefours);
+            sleep(1);
+            main();
+            break;
+        
+        case '5' :
+            system("clear");
+            exit(EXIT_SUCCESS);
+            break;
+        
+        default :
+            system("clear");
+            printf("\n\n\n\t\t\t\t\t\t\t Choix non disponible :( ! \n\n\n");
+            sleep(1);
+            main();
+            break;
+    }
 
     /* Libération de la mémoire dynamique. */
     for(int i = 0; i<=3; i++){
@@ -53,8 +63,6 @@ int main(void){
     free(serveur->file_p);
     free(serveur->file_np);
     free(serveur);
-
-    printf("\n\n\n");
 
     return 0;
 }

@@ -9,6 +9,7 @@
 
 
 void title(void);
+void affichageDonneesSimulation(Serveur* serveur, Carrefour* carrefours[4]);
 void genererCarrefours(Carrefour* carrefours[]);
 void genererVehiculesPrioritaires(File* file, int nombre);
 void genererVehiculesNonPrioritaires(File* file, int nombre);

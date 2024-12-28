@@ -10,7 +10,18 @@
 
 
 // Afficher le titre du programme à l'éxécution.
-void title(void){ system("clear"); printf("\n\n\t\t\t\t\t\t\t\t\t**** Système de gestion de carrefour ****\n\n\n"); }
+void title(void){ system("clear"); printf("\n\n\t\t\t\t\t\t\t**** Système de gestion de carrefour ****\n\n\n"); }
+
+// Afficher les données de la simulation.
+void affichageDonneesSimulation(Serveur* serveur, Carrefour* carrefours[4]){
+
+    title();
+    afficherCaractéristiquesServeur(serveur);
+    for(int i = 0; i<=3; i++){
+
+        afficherCaracteristiquesCarrefour(carrefours[i]);
+    }
+}
 
 // Générer les 4 carrefours.
 void genererCarrefours(Carrefour *carrefours[]){
@@ -74,9 +85,9 @@ void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
     // Vehicule* vehicule = malloc(sizeof(Vehicule));
     if(origine->premier != NULL){
         dupliquerVehicule(origine->premier, vehicule);
+        ajouter(arrivee, vehicule);
+        supprimer(origine);
     }
-    ajouter(arrivee, vehicule);
-    supprimer(origine);
 }
 
 // Fonction de simulation du système de circulation.
@@ -84,32 +95,39 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
 
     while(1){
 
-        title();
-        afficherCaractéristiquesServeur(serveur);
-        for(int i = 0; i<=3; i++){
-
-            afficherCaracteristiquesCarrefour(carrefours[i]);
-        }
+        affichageDonneesSimulation(serveur, carrefours);
 
         Vehicule* vehicule1 = malloc(sizeof(Vehicule));
         deplacerVehicule(vehicule1, serveur->file_p, carrefours[0]->file);
-        // if(serveur->file_p->premier != NULL){
-        //     dupliquerVehicule(serveur->file_p->premier, vehicule1);
-        // }
-        // ajouter(carrefours[0]->file, vehicule1);
-        // supprimer(serveur->file_p);
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        supprimer(carrefours[0]->file);
+        
 
         Vehicule* vehicule2 = malloc(sizeof(Vehicule));
         deplacerVehicule(vehicule2, serveur->file_np, carrefours[1]->file);
-        // if(serveur->file_np->premier != NULL){
-        //     dupliquerVehicule(serveur->file_np->premier, vehicule1);
-        // }
-        // ajouter(carrefours[1]->file, vehicule2);
-        // supprimer(serveur->file_np);
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        supprimer(carrefours[1]->file);
+
+        Vehicule* vehicule3 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule1, serveur->file_p, carrefours[2]->file);
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        supprimer(carrefours[2]->file);
+        
+
+        Vehicule* vehicule4 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule2, serveur->file_np, carrefours[3]->file);
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        supprimer(carrefours[3]->file);
+        
 
         sleep(1);
         // if(longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
-        if(carrefours[0]->compteur == 10 && carrefours[1]->compteur == 10){
+        if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
+            && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
 
             break;
         }

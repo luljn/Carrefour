@@ -13,6 +13,7 @@ struct Serveur
 };
 
 Serveur initialiserServeur();
+void afficherCaractéristiquesServeur(Serveur* serveur);
 void serveurEnvoyerDonnees();       // Pour envoyer des données.
 void serveurRecevoirDonnees();      // Pour recevoir des données.
 

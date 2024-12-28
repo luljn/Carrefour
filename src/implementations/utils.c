@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "../includes/carrefour.h"
 #include "../includes/file.h"
+#include "../includes/serveur.h"
 #include "../includes/utils.h"
 #include "../includes/vehicule.h"
 
@@ -67,10 +69,35 @@ void genererVehiculesNonPrioritaires(File* file, int nombre){
 }
 
 // Fonction de simulation du système de circulation.
-void simulationSystemeDeCirculation(Carrefour* carrefours[4]){
+void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
 
-    for(int i = 0; i<=3; i++){
+    while(1){
 
-        afficherCaracteristiquesCarrefour(carrefours[i]);
+        title();
+        afficherCaractéristiquesServeur(serveur);
+        for(int i = 0; i<=3; i++){
+
+            afficherCaracteristiquesCarrefour(carrefours[i]);
+        }
+
+        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+        if(carrefours[0]->file->premier != NULL){
+            dupliquerVehicule(carrefours[0]->file->premier, vehicule1);
+        }
+        ajouter(carrefours[1]->file, vehicule1);
+        supprimer(carrefours[0]->file);
+
+        Vehicule* vehicule2 = malloc(sizeof(Vehicule));
+        if(carrefours[3]->file->premier != NULL){
+            dupliquerVehicule(carrefours[3]->file->premier, vehicule1);
+        }
+        ajouter(carrefours[2]->file, vehicule2);
+        supprimer(carrefours[3]->file);
+
+        sleep(1);
+        if(carrefours[0]->compteur == 0 && carrefours[3]->compteur == 0){
+
+            break;
+        }
     }
 }

@@ -29,7 +29,7 @@ void afficherCaracteristiquesCarrefour(Carrefour* carrefour){
 }
 
 // Enregistrer les données de circulation d'un carrefour.
-void enregistrerDonnees(char cheminFichier[50], Vehicule* vehicule, char movement[7]){
+void enregistrerDonnees(char cheminFichier[23], Vehicule* vehicule, char movement[7]){
 
     FILE *fichier = fopen(cheminFichier, "a");
 

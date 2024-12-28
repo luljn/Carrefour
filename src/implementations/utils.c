@@ -97,39 +97,48 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
 
         affichageDonneesSimulation(serveur, carrefours);
 
-        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
-        deplacerVehicule(vehicule1, serveur->file_p, carrefours[0]->file);
-        affichageDonneesSimulation(serveur, carrefours);
-        sleep(1);
-        supprimer(carrefours[0]->file);
-        
-
-        Vehicule* vehicule2 = malloc(sizeof(Vehicule));
-        deplacerVehicule(vehicule2, serveur->file_np, carrefours[1]->file);
-        affichageDonneesSimulation(serveur, carrefours);
-        sleep(1);
-        supprimer(carrefours[1]->file);
-
-        Vehicule* vehicule3 = malloc(sizeof(Vehicule));
-        deplacerVehicule(vehicule1, serveur->file_p, carrefours[2]->file);
-        affichageDonneesSimulation(serveur, carrefours);
-        sleep(1);
-        supprimer(carrefours[2]->file);
-        
-
-        Vehicule* vehicule4 = malloc(sizeof(Vehicule));
-        deplacerVehicule(vehicule2, serveur->file_np, carrefours[3]->file);
-        affichageDonneesSimulation(serveur, carrefours);
-        sleep(1);
-        supprimer(carrefours[3]->file);
-        
-
-        sleep(1);
         // if(longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
         if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
             && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
 
             break;
         }
+
+        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule1, serveur->file_p, carrefours[0]->file);
+        enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "sortie");
+        supprimer(carrefours[0]->file);
+        
+
+        Vehicule* vehicule2 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule2, serveur->file_np, carrefours[1]->file);
+        enregistrerDonnees("../logs/carrefour2.txt", vehicule2, "entree");
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        enregistrerDonnees("../logs/carrefour2.txt", vehicule2, "sortie");
+        supprimer(carrefours[1]->file);
+
+        Vehicule* vehicule3 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule1, serveur->file_p, carrefours[2]->file);
+        enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "entree");
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "sortie");
+        supprimer(carrefours[2]->file);
+        
+
+        Vehicule* vehicule4 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule2, serveur->file_np, carrefours[3]->file);
+        enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "entree");
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "sortie");
+        supprimer(carrefours[3]->file);
+        
+
+        sleep(1);
     }
 }

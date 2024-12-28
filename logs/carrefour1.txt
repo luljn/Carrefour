@@ -1,0 +1,20 @@
+Le véhicule d'id '0' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '0' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '6' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '6' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '8' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '8' et de type 'ambulance' est sorti du carrefour.
+

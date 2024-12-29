@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
 #include <unistd.h>
 #include "../includes/carrefour.h"
 #include "../includes/file.h"
+#include "../includes/message.h"
 #include "../includes/serveur.h"
 #include "../includes/utils.h"
 #include "../includes/vehicule.h"
@@ -107,6 +111,20 @@ void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
 
 // Fonction de simulation du système de circulation.
 void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
+
+    key_t cle;
+    int flag, num, i;
+    flag = IPC_CREAT | IPC_EXCL | 0666;
+
+    if((num = msgget(cle, flag)) == -1){
+
+        fprintf(stderr, "création de la file de message impossible !\n\n");
+        exit(1);
+    }
+
+    system("clear");
+    printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
+    sleep(2);
 
     while(1){
 

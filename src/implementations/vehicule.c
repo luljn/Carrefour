@@ -46,11 +46,11 @@ void dupliquerVehicule(Vehicule* vehicule1, Vehicule* vehicule2){
     vehicule2->vitesse = vehicule1->vitesse;
     strcpy(vehicule2->destination, vehicule1->destination);
 }
-
+/*
 void vehiculeEnvoyerDonnees(Serveur* serveur){
 
 }
 
 void vehiculeRecevoirDonnees(Serveur* serveur){
 
-}
+}*/

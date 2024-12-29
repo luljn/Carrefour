@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
@@ -114,7 +115,11 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
 
     key_t cle;
     int flag, num, i;
+    long t = 1;
     flag = IPC_CREAT | IPC_EXCL | 0666;
+    Message message; 
+    message.type = t;
+    strcpy(message.message, "requête : quelle disponibilité ?");
 
     if((num = msgget(cle, flag)) == -1){
 
@@ -133,11 +138,26 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
         // if(longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
         if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
             && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
-
+            
+            msgctl(num, IPC_RMID, 0);
             break;
         }
 
         Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+        /* Evoie de msg */
+        i = msgsnd(num, &message, strlen(message.message), IPC_NOWAIT);
+        if(i != 0){ system("clear"); fprintf(stderr, "message non envoyé !\n\n"); }
+        else{ system("clear"); fprintf(stderr, "message envoyé !\n\n"); }
+        sleep(1);
+        /* Réception de msg */
+        strcpy(message.message, "disponible : 1");
+        if(msgrcv(num, &message, sizeof(message.message), 1, 0) == -1){
+            perror("msgrcv");
+            exit(1);
+        }
+        else{ system("clear"); fprintf(stderr, "message reçu !\n\n"); }
+        sleep(1);
+        /**/
         deplacerVehicule(vehicule1, serveur->file_p, carrefours[0]->file);
         enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
         affichageDonneesSimulation(serveur, carrefours);

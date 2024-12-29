@@ -40,8 +40,6 @@ int main(void){
         
         default :
             system("clear");
-            printf("\n\n\n\t\t\t\t\t\t\t Choix non disponible :( ! \n\n\n");
-            sleep(1);
             main();
             break;
     }

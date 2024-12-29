@@ -16,11 +16,11 @@ void title(void){ system("clear"); printf("\n\n\t\t\t\t\t\t**** Système de gest
 char menu(){
 
     char choix;
-    printf("\t\t\t\t\t\t\t1- Circulation normale\n\n\n");
-    printf("\t\t\t\t\t\t\t2- Heure de pointe\n\n\n");
-    printf("\t\t\t\t\t\t\t3- Accidents\n\n\n");
-    printf("\t\t\t\t\t\t\t4- Travaux\n\n\n");
-    printf("\t\t\t\t\t\t\t5- Quitter\n\n\n");
+    printf("\t\t\t\t\t\t\t1 - Circulation normale\n\n\n");
+    printf("\t\t\t\t\t\t\t2 - Heure de pointe\n\n\n");
+    printf("\t\t\t\t\t\t\t3 - Accidents\n\n\n");
+    printf("\t\t\t\t\t\t\t4 - Travaux\n\n\n");
+    printf("\t\t\t\t\t\t\t5 - Quitter\n\n\n");
     printf("\t\t\t\t\t\tVotre choix : ");
     scanf("%c", &choix);
 

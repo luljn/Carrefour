@@ -99,6 +99,37 @@ void genererVehiculesNonPrioritaires(File* file, int nombre){
     }
 }
 
+// Envoyer une requête au serveur.
+int envoyerRequete(int num, Message requete, Vehicule* vehicule){
+
+    int i;
+    i = msgsnd(num, &requete, strlen(requete.message), IPC_NOWAIT);
+    if(i != 0){ system("clear"); fprintf(stderr, "requête non envoyé !\n\n"); }
+    else{ 
+        system("clear"); 
+        fprintf(stderr, "Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message); 
+        // printf("Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message);
+    }
+
+    return i;
+}
+
+// Recevoir les requêtes des véhicules.
+void recevoirRequete(int num, Message requete){
+
+    if(msgrcv(num, &requete, sizeof(requete.message), 1, 0) == -1){
+        perror("msgrcv");
+        exit(1);
+    }
+    else{ fprintf(stderr, "Serveur central -> requête reçu !\n\n"); }
+}
+
+// Envoyer une réponse aux véhicules ayant envoyés une requête.
+void envoyerReponse(){}
+
+// Recevoir la réponse du serveur.
+void recevoirReponse(){}
+
 // Déplacer un véhicule d'une file à une autre (de la file 'origine' vers la file 'arrivee').
 void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
 
@@ -113,7 +144,7 @@ void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
 // Fonction de simulation du système de circulation.
 void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
 
-    key_t cle;
+    key_t cle = 1;
     int flag, num, i;
     long t = 1;
     flag = IPC_CREAT | IPC_EXCL | 0666;
@@ -121,6 +152,7 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
     message.type = t;
     strcpy(message.message, "requête : quelle disponibilité ?");
 
+    /* Initialisation de la file message */
     if((num = msgget(cle, flag)) == -1){
 
         fprintf(stderr, "création de la file de message impossible !\n\n");
@@ -144,19 +176,12 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
         }
 
         Vehicule* vehicule1 = malloc(sizeof(Vehicule));
-        /* Evoie de msg */
-        i = msgsnd(num, &message, strlen(message.message), IPC_NOWAIT);
-        if(i != 0){ system("clear"); fprintf(stderr, "message non envoyé !\n\n"); }
-        else{ system("clear"); fprintf(stderr, "message envoyé !\n\n"); }
-        sleep(1);
-        /* Réception de msg */
-        strcpy(message.message, "disponible : 1");
-        if(msgrcv(num, &message, sizeof(message.message), 1, 0) == -1){
-            perror("msgrcv");
-            exit(1);
-        }
-        else{ system("clear"); fprintf(stderr, "message reçu !\n\n"); }
-        sleep(1);
+        /* Evoie de la requête au serveur */
+        i = envoyerRequete(num, message, vehicule1);
+        sleep(2);
+        /* Réception de la requête du véhicule */
+        recevoirRequete(num, message);
+        sleep(2);
         /**/
         deplacerVehicule(vehicule1, serveur->file_p, carrefours[0]->file);
         enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
@@ -164,7 +189,6 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
         sleep(1);
         enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "sortie");
         supprimer(carrefours[0]->file);
-        
 
         Vehicule* vehicule2 = malloc(sizeof(Vehicule));
         deplacerVehicule(vehicule2, serveur->file_np, carrefours[1]->file);

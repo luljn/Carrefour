@@ -1,0 +1,40 @@
+Le véhicule d'id '10' et de type 'moto' est entré dans le carrefour.
+
+Le véhicule d'id '10' et de type 'moto' est sorti du carrefour.
+
+Le véhicule d'id '11' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '11' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '12' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '12' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '13' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '13' et de type 'camion' est sorti du carrefour.
+
+Le véhicule d'id '14' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '14' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '15' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '15' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '16' et de type 'moto' est entré dans le carrefour.
+
+Le véhicule d'id '16' et de type 'moto' est sorti du carrefour.
+
+Le véhicule d'id '17' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '17' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '18' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '18' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '19' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '19' et de type 'camion' est sorti du carrefour.
+

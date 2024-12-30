@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "includes/carrefour.h"
 #include "includes/file.h"
 #include "includes/serveur.h"
@@ -8,63 +9,58 @@
 
 
 
+// Fonction principale.
 int main(void){
 
-    title();
-
+    /* Initialisation des composants */
     Serveur *serveur = malloc(sizeof(Serveur));          // Serveur central.
     Carrefour *carrefours[4];                            // Tableau de pointeur sur carrefour.
-    Vehicule *vehicules[10];                             // Tableau de pointeur sur véhicule.
-    File *file;
+    char choix;
 
     *serveur = initialiserServeur();
-    file = initialiserFile();
     genererCarrefours(carrefours);
-    genererVehicules(vehicules);
 
+    title();
+    choix = menu();
+
+    switch(choix){
+
+        case '1' :
+            genererVehiculesPrioritaires(serveur->file_p, 10);
+            genererVehiculesNonPrioritaires(serveur->file_np, 10);
+            simulationSystemeDeCirculation(serveur, carrefours);
+            sleep(1);
+            main();
+            break;
+        
+        case '5' :
+            system("clear");
+            exit(EXIT_SUCCESS);
+            break;
+        
+        default :
+            system("clear");
+            main();
+            break;
+    }
+
+    /* Libération de la mémoire dynamique. */
     for(int i = 0; i<=3; i++){
 
-        afficherCaracteristiquesCarrefour(carrefours[i]);
+        free(carrefours[i]->file);
     }
 
-    for(int i = 0; i<=3; i++){
-
-        afficherFile(carrefours[i]->file);
-    }
-
-    // for(int i = 0; i<=9; i++){
-
-    //     afficherCaracteristiquesVehicule(vehicules[i]);
-    // }
-
-    for(int i = 0; i<=9; i++){
-
-        ajouter(file, vehicules[i]);
-    }
-
-    afficherFile(file);
-    int longueur = longueurFile(file);
-    printf("\nLongueur de la file : %d\n\n", longueur);
-    afficherFile(serveur->file_np);
-    afficherFile(serveur->file_p);
-
-    enregistrerDonnees("../logs/carrefour1.txt");
-
-    supprimer(file);
-    afficherFile(file);
-
-    // Libération de la mémoire dynamique.
     for(int i = 0; i<=3; i++){
 
         free(carrefours[i]);
     }
 
-    for(int i = 1; i<=9; i++){
+    viderFile(serveur->file_p);
+    viderFile(serveur->file_np);
 
-        free(vehicules[i]);
-    }
-
-    printf("\n\n\n");
+    free(serveur->file_p);
+    free(serveur->file_np);
+    free(serveur);
 
     return 0;
 }

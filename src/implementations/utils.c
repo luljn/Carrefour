@@ -109,7 +109,7 @@ void envoyerRequete(int num, Message requete, Vehicule* vehicule){
     else{ 
         system("clear"); 
         // fprintf(stderr, "Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message); 
-        printf("Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message);
+        printf("Le véhicule d'id '%d' et de type '%s' a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message);
     }
 
     // return i;
@@ -152,7 +152,7 @@ int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carr
     j = msgsnd(num, &reponse, strlen(reponse.message), IPC_NOWAIT);
     if(j != 0){ system("clear"); fprintf(stderr, "reponse non envoyé !\n\n"); }
     else{; 
-        printf("Le Serveur a envoyé la réponse -> %s , au véhicule d'id %d et de type %s.\n\n", reponse.message, vehicule->id, vehicule->type); 
+        printf("Le Serveur a envoyé la réponse -> %s , au véhicule d'id '%d' et de type '%s'.\n\n", reponse.message, vehicule->id, vehicule->type); 
     }
 
     return carrefour_id;
@@ -231,9 +231,21 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
         affichageDonneesSimulation(serveur, carrefours);
         sleep(1);
         enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "sortie");
-        supprimer(carrefours[0]->file);
+        supprimer(carrefours[i]->file);
         strcpy(message.message, "");
 
+        /* Evoie de la requête au serveur */
+        envoyerRequete(num, message, serveur->file_np->premier);
+        sleep(2);
+        /* Réception de la requête du véhicule */
+        recevoirRequete(num, message);
+        sleep(2);
+        /* Envoie de la réponse au véhicule */
+        i = envoyerReponse(num, message, serveur->file_np->premier, carrefours);
+        sleep(2);
+        /* Réception de la réponse du serveur */
+        recevoirReponse(num, message);
+        sleep(2);
         Vehicule* vehicule2 = malloc(sizeof(Vehicule));
         deplacerVehicule(vehicule2, serveur->file_np, carrefours[1]->file);
         enregistrerDonnees("../logs/carrefour2.txt", vehicule2, "entree");
@@ -242,22 +254,22 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
         enregistrerDonnees("../logs/carrefour2.txt", vehicule2, "sortie");
         supprimer(carrefours[1]->file);
 
-        Vehicule* vehicule3 = malloc(sizeof(Vehicule));
-        deplacerVehicule(vehicule1, serveur->file_p, carrefours[2]->file);
-        enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "entree");
-        affichageDonneesSimulation(serveur, carrefours);
-        sleep(1);
-        enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "sortie");
-        supprimer(carrefours[2]->file);
+        // Vehicule* vehicule3 = malloc(sizeof(Vehicule));
+        // deplacerVehicule(vehicule1, serveur->file_p, carrefours[2]->file);
+        // enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "entree");
+        // affichageDonneesSimulation(serveur, carrefours);
+        // sleep(1);
+        // enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "sortie");
+        // supprimer(carrefours[2]->file);
         
 
-        Vehicule* vehicule4 = malloc(sizeof(Vehicule));
-        deplacerVehicule(vehicule2, serveur->file_np, carrefours[3]->file);
-        enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "entree");
-        affichageDonneesSimulation(serveur, carrefours);
-        sleep(1);
-        enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "sortie");
-        supprimer(carrefours[3]->file);
+        // Vehicule* vehicule4 = malloc(sizeof(Vehicule));
+        // deplacerVehicule(vehicule2, serveur->file_np, carrefours[3]->file);
+        // enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "entree");
+        // affichageDonneesSimulation(serveur, carrefours);
+        // sleep(1);
+        // enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "sortie");
+        // supprimer(carrefours[3]->file);
         
 
         sleep(1);

@@ -21,8 +21,6 @@ struct Vehicule
 Vehicule initialiserVehicule(int id, char type[100], int estPrioritaire, float vitesse, char destination[100]);
 void afficherCaracteristiquesVehicule(Vehicule* vehicule);
 void dupliquerVehicule(Vehicule* vehicule1, Vehicule* vehicule2);  // vehicule1 : véhicule à dupliquer.
-// void vehiculeEnvoyerDonnees(Serveur* serveur);  // Pour envoyer des données au serveur central.
-// void vehiculeRecevoirDonnees(Serveur* serveur); // Pour recevoir des données du serveur central.
 
 
 

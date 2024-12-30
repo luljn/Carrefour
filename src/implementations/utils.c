@@ -103,12 +103,13 @@ void genererVehiculesNonPrioritaires(File* file, int nombre){
 void envoyerRequete(int num, Message requete, Vehicule* vehicule){
 
     int i;
+    strcpy(requete.message, "requête : quelle disponibilité ?");
     i = msgsnd(num, &requete, strlen(requete.message), IPC_NOWAIT);
     if(i != 0){ system("clear"); fprintf(stderr, "requête non envoyé !\n\n"); }
     else{ 
         system("clear"); 
-        fprintf(stderr, "Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message); 
-        // printf("Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message);
+        // fprintf(stderr, "Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message); 
+        printf("Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message);
     }
 
     // return i;
@@ -121,13 +122,14 @@ void recevoirRequete(int num, Message requete){
         perror("msgrcv");
         exit(1);
     }
-    else{ fprintf(stderr, "Serveur central -> requête reçu !\n\n"); }
+    else{ printf("Serveur central -> requête reçu !\n\n"); }
 }
 
 // Envoyer une réponse aux véhicules ayant envoyés une requête.
 int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carrefours[4]){
 
     int carrefour_id;
+    strcpy(reponse.message, "");
     for(int i = 0; i<=3; i++){
 
         if (longueurFile(carrefours[i]->file) < 10){
@@ -150,7 +152,7 @@ int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carr
     j = msgsnd(num, &reponse, strlen(reponse.message), IPC_NOWAIT);
     if(j != 0){ system("clear"); fprintf(stderr, "reponse non envoyé !\n\n"); }
     else{; 
-        fprintf(stderr, "Le Serveur a envoyé la réponse -> %s , au véhicule d'id %d et de type %s.\n\n", reponse.message, vehicule->id, vehicule->type); 
+        printf("Le Serveur a envoyé la réponse -> %s , au véhicule d'id %d et de type %s.\n\n", reponse.message, vehicule->id, vehicule->type); 
     }
 
     return carrefour_id;
@@ -163,7 +165,7 @@ void recevoirReponse(int num, Message reponse){
         perror("msgrcv");
         exit(1);
     }
-    else{ fprintf(stderr, "Véhicule -> réponse reçu : %s!\n\n", reponse.message); }
+    else{ printf("Véhicule -> réponse reçu : %s !\n\n", reponse.message); }
 }
 
 // Déplacer un véhicule d'une file à une autre (de la file 'origine' vers la file 'arrivee').
@@ -186,7 +188,7 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
     flag = IPC_CREAT | IPC_EXCL | 0666;
     Message message; 
     message.type = t;
-    strcpy(message.message, "requête : quelle disponibilité ?");
+    // strcpy(message.message, "requête : quelle disponibilité ?");
 
     /* Initialisation de la file message */
     if((num = msgget(cle, flag)) == -1){
@@ -211,25 +213,26 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
             break;
         }
 
-        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
         /* Evoie de la requête au serveur */
-        envoyerRequete(num, message, vehicule1);
+        envoyerRequete(num, message, serveur->file_p->premier);
         sleep(2);
         /* Réception de la requête du véhicule */
         recevoirRequete(num, message);
         sleep(2);
         /* Envoie de la réponse au véhicule */
-        i = envoyerReponse(num, message, vehicule1, carrefours);
+        i = envoyerReponse(num, message, serveur->file_p->premier, carrefours);
         sleep(2);
         /* Réception de la réponse du serveur */
         recevoirReponse(num, message);
         sleep(2);
+        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
         deplacerVehicule(vehicule1, serveur->file_p, carrefours[i]->file);
         enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
         affichageDonneesSimulation(serveur, carrefours);
         sleep(1);
         enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "sortie");
         supprimer(carrefours[0]->file);
+        strcpy(message.message, "");
 
         Vehicule* vehicule2 = malloc(sizeof(Vehicule));
         deplacerVehicule(vehicule2, serveur->file_np, carrefours[1]->file);

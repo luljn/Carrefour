@@ -100,7 +100,7 @@ void genererVehiculesNonPrioritaires(File* file, int nombre){
 }
 
 // Envoyer une requête au serveur.
-int envoyerRequete(int num, Message requete, Vehicule* vehicule){
+void envoyerRequete(int num, Message requete, Vehicule* vehicule){
 
     int i;
     i = msgsnd(num, &requete, strlen(requete.message), IPC_NOWAIT);
@@ -111,7 +111,7 @@ int envoyerRequete(int num, Message requete, Vehicule* vehicule){
         // printf("Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message);
     }
 
-    return i;
+    // return i;
 }
 
 // Recevoir les requêtes des véhicules.
@@ -125,10 +125,46 @@ void recevoirRequete(int num, Message requete){
 }
 
 // Envoyer une réponse aux véhicules ayant envoyés une requête.
-void envoyerReponse(){}
+int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carrefours[4]){
+
+    int carrefour_id;
+    for(int i = 0; i<=3; i++){
+
+        if (longueurFile(carrefours[i]->file) < 10){
+
+            if(i == 0)
+                strcpy(reponse.message, "Disponibilité : carrefour 1");
+            if(i == 1)
+                strcpy(reponse.message, "Disponibilité : carrefour 2");
+            if(i == 2)
+                strcpy(reponse.message, "Disponibilité : carrefour 3");
+            if(i == 3)
+                strcpy(reponse.message, "Disponibilité : carrefour 4");
+            carrefour_id = i;
+            break;
+        }
+    }
+
+    reponse.type = 2;
+    int j;
+    j = msgsnd(num, &reponse, strlen(reponse.message), IPC_NOWAIT);
+    if(j != 0){ system("clear"); fprintf(stderr, "reponse non envoyé !\n\n"); }
+    else{; 
+        fprintf(stderr, "Le Serveur a envoyé la réponse -> %s , au véhicule d'id %d et de type %s.\n\n", reponse.message, vehicule->id, vehicule->type); 
+    }
+
+    return carrefour_id;
+}
 
 // Recevoir la réponse du serveur.
-void recevoirReponse(){}
+void recevoirReponse(int num, Message reponse){
+
+    if(msgrcv(num, &reponse, sizeof(reponse.message), 2, 0) == -1){
+        perror("msgrcv");
+        exit(1);
+    }
+    else{ fprintf(stderr, "Véhicule -> réponse reçu : %s!\n\n", reponse.message); }
+}
 
 // Déplacer un véhicule d'une file à une autre (de la file 'origine' vers la file 'arrivee').
 void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
@@ -177,13 +213,18 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
 
         Vehicule* vehicule1 = malloc(sizeof(Vehicule));
         /* Evoie de la requête au serveur */
-        i = envoyerRequete(num, message, vehicule1);
+        envoyerRequete(num, message, vehicule1);
         sleep(2);
         /* Réception de la requête du véhicule */
         recevoirRequete(num, message);
         sleep(2);
-        /**/
-        deplacerVehicule(vehicule1, serveur->file_p, carrefours[0]->file);
+        /* Envoie de la réponse au véhicule */
+        i = envoyerReponse(num, message, vehicule1, carrefours);
+        sleep(2);
+        /* Réception de la réponse du serveur */
+        recevoirReponse(num, message);
+        sleep(2);
+        deplacerVehicule(vehicule1, serveur->file_p, carrefours[i]->file);
         enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
         affichageDonneesSimulation(serveur, carrefours);
         sleep(1);

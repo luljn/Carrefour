@@ -3,7 +3,8 @@
 # Description
 
 Simulation d'un système de gestion de la circulation à travers un ensemble de quatre carrefours.<br/>
-Développé sous Ubuntu 22.
+Développé sous Ubuntu 22.<br/>
+Ce projet est conçu pour s'éxécuter sur un système Linux.
 
 # Outils utilisés
 
@@ -12,8 +13,16 @@ Développé sous Ubuntu 22.
 
 # Exécuter le code
 
-- Utiliser un système Linux (Ubuntu par exemple) ou WSL sous windows.
+## Important : - Utiliser un système Linux (Ubuntu par exemple) ou WSL sous windows !
+
+1) 1ère méthode :
+
 - Naviguer jusqu'au dossier 'scripts' depuis la racine du dossier principal du projet, et éxécuter le fichier 'run.sh' avec la commande 'bash run.sh' .
+
+2) 2ème méthode :
+
+- Naviguer jusqu'au dossier 'scripts' depuis la racine du dossier principal du projet, et éxécuter le fichier 'compile.sh' avec la commande 'bash compile.sh' pour compiler le code.
+- Naviguer jusqu'au dossier 'executable' depuis la racine du dossier principal du projet, et éxécuter le fichier 'main' avec la commande './main' .
 
 ### Autheur
 

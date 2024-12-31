@@ -33,6 +33,13 @@ int main(void){
             main();
             break;
         
+        case '2' :
+            genererVehiculesNonPrioritaires(serveur->file_np, 50);
+            heureDePointe(serveur, carrefours);
+            sleep(1);
+            main();
+            break;
+        
         case '5' :
             system("clear");
             exit(EXIT_SUCCESS);

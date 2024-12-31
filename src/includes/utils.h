@@ -21,6 +21,7 @@ int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carr
 void recevoirReponse(int num, Message reponse);                                                         // Les véhicules reçoivent les réponses du serveur.
 void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee);          // Déplacement d'un véhicule d'une file à une autre.
 void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]);
+void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]);
 
 
 

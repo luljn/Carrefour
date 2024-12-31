@@ -275,3 +275,24 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
         sleep(1);
     }
 }
+
+void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
+
+    key_t cle = 1;
+    int flag, num, i;
+    long t = 1;
+    flag = IPC_CREAT | IPC_EXCL | 0666;
+    Message message; 
+    message.type = t;
+
+    /* Initialisation de la file message */
+    if((num = msgget(cle, flag)) == -1){
+
+        fprintf(stderr, "création de la file de message impossible !\n\n");
+        exit(1);
+    }
+
+    system("clear");
+    printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
+    sleep(2);
+}

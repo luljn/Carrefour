@@ -172,9 +172,13 @@ void recevoirReponse(int num, Message reponse){
 void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
 
     // Vehicule* vehicule = malloc(sizeof(Vehicule));
-    if(origine->premier != NULL){
+    if(origine->premier != NULL && longueurFile(arrivee) < 10){
+        
         dupliquerVehicule(origine->premier, vehicule);
-        ajouter(arrivee, vehicule);
+        if(vehicule->estPrioritaire == 0)
+            ajouter(arrivee, vehicule);
+        else if(vehicule->estPrioritaire == 1)
+            ajouterDebut(arrivee, vehicule);
         supprimer(origine);
     }
 }
@@ -193,7 +197,7 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
     /* Initialisation de la file message */
     if((num = msgget(cle, flag)) == -1){
 
-        fprintf(stderr, "création de la file de message impossible !\n\n");
+        fprintf(stderr, "Création de la file de message impossible !\n\n");
         exit(1);
     }
 
@@ -288,11 +292,24 @@ void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
     /* Initialisation de la file message */
     if((num = msgget(cle, flag)) == -1){
 
-        fprintf(stderr, "création de la file de message impossible !\n\n");
+        fprintf(stderr, "Création de la file de message impossible !\n\n");
         exit(1);
     }
 
     system("clear");
     printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
     sleep(2);
+
+    while(1){
+
+        affichageDonneesSimulation(serveur, carrefours);
+
+        // if(longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
+        if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
+            && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
+            
+            msgctl(num, IPC_RMID, 0);
+            break;
+        }
+    }
 }

@@ -36,8 +36,8 @@ int main(void){
         case '2' :
             genererVehiculesNonPrioritaires(serveur->file_np, 50);
             heureDePointe(serveur, carrefours);
-            sleep(1);
-            main();
+            // sleep(1);
+            // main();
             break;
         
         case '5' :

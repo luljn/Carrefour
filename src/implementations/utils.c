@@ -109,7 +109,7 @@ void envoyerRequete(int num, Message requete, Vehicule* vehicule){
     else{ 
         system("clear"); 
         // fprintf(stderr, "Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message); 
-        printf("Le véhicule d'id '%d' et de type '%s' a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message);
+        printf("Le véhicule d'id '%d' de type '%s' et de priorité '%d' , a envoyé -> %s\n\n", vehicule->id, vehicule->type, vehicule->estPrioritaire, requete.message);
     }
 
     // return i;
@@ -152,7 +152,7 @@ int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carr
     j = msgsnd(num, &reponse, strlen(reponse.message), IPC_NOWAIT);
     if(j != 0){ system("clear"); fprintf(stderr, "reponse non envoyé !\n\n"); }
     else{; 
-        printf("Le Serveur a envoyé la réponse -> %s , au véhicule d'id '%d' et de type '%s'.\n\n", reponse.message, vehicule->id, vehicule->type); 
+        printf("Le Serveur a envoyé la réponse -> %s , au véhicule d'id '%d' de type '%s' et de priorité '%d'.\n\n", reponse.message, vehicule->id, vehicule->type, vehicule->estPrioritaire);
     }
 
     return carrefour_id;
@@ -304,12 +304,53 @@ void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
 
         affichageDonneesSimulation(serveur, carrefours);
 
-        // if(longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
-        if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
-            && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
+        if(carrefours[0]->compteur == 10 && carrefours[1]->compteur == 10 && carrefours[2]->compteur == 10 
+            && carrefours[3]->compteur == 10 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 10){
+        // if(longueurFile(carrefours[4]->file) == 10){
             
             msgctl(num, IPC_RMID, 0);
             break;
+        }
+
+        while(longueurFile(carrefours[0]->file) != 10 || longueurFile(carrefours[1]->file) != 10
+                || longueurFile(carrefours[2]->file) != 10 || longueurFile(carrefours[3]->file) != 10){
+
+            /* Evoie de la requête au serveur */
+            envoyerRequete(num, message, serveur->file_np->premier);
+            // sleep(2);
+            /* Réception de la requête du véhicule */
+            recevoirRequete(num, message);
+            // sleep(2);
+            /* Envoie de la réponse au véhicule */
+            i = envoyerReponse(num, message, serveur->file_np->premier, carrefours);
+            // sleep(2);
+            /* Réception de la réponse du serveur */
+            recevoirReponse(num, message);
+            // sleep(2);
+            Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+            deplacerVehicule(vehicule1, serveur->file_np, carrefours[i]->file);
+
+            switch(i){
+            
+                case 0 :
+                    enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
+                    break;
+                case 1 :
+                    enregistrerDonnees("../logs/carrefour2.txt", vehicule1, "entree");
+                    break;
+                case 2 :
+                    enregistrerDonnees("../logs/carrefour3.txt", vehicule1, "entree");
+                    break;
+                case 3 :
+                    enregistrerDonnees("../logs/carrefour4.txt", vehicule1, "entree");
+                    break;
+                
+                default :
+                    break;
+            }
+            
+            affichageDonneesSimulation(serveur, carrefours);
+            sleep(1);
         }
     }
 }

@@ -57,6 +57,24 @@ void ajouter(File* file, Vehicule *vehicule){
     }
 }
 
+// Ajouter un nouvel élément au début d'une file.
+void ajouterDebut(File* file, Vehicule *vehicule){
+
+    /* Création du nouvel élément */
+    Vehicule *nouveau = malloc(sizeof(*nouveau));
+    
+    if(file == NULL || nouveau == NULL){
+
+        exit(EXIT_FAILURE);
+    }
+
+    nouveau = vehicule;
+
+    /* Insertion de l'élément au début de la liste */
+    nouveau->suivant = file->premier;
+    file->premier = nouveau;
+}
+
 // Supprimer le 1er élément d'une file.
 void supprimer(File* file){
     

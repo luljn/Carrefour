@@ -50,6 +50,32 @@ void enregistrerDonnees(char cheminFichier[23], Vehicule* vehicule, char movemen
     
     else{
 
-        perror("Erreur d'ouverture du fichier");
+        perror("Erreur d'ouverture du fichier\n\n");
+    }
+}
+
+// Enregistrer le type de circulation pour les logs.
+void typeDeCirculation(char cheminFichier[23], int typeDeCirculation){
+
+    FILE *fichier = fopen(cheminFichier, "a");
+
+    if(fichier != NULL){
+
+        switch(typeDeCirculation){
+
+            case 1 :
+                fprintf(fichier, "\t\t\t\t\t\t\t*** Circulation Normale ***\n\n");
+                fclose(fichier);
+                break;
+            
+            default :
+                break;
+        }
+        
+    }
+
+    else{
+
+        perror("Erreur d'ouverture du fichier\n\n");
     }
 }

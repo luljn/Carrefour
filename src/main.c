@@ -28,6 +28,10 @@ int main(void){
         case '1' :
             genererVehiculesPrioritaires(serveur->file_p, 10);
             genererVehiculesNonPrioritaires(serveur->file_np, 10);
+            // typeDeCirculation("../logs/carrefour1.txt", 1);
+            // typeDeCirculation("../logs/carrefour2.txt", 1);
+            // typeDeCirculation("../logs/carrefour3.txt", 1);
+            // typeDeCirculation("../logs/carrefour4.txt", 1);
             simulationSystemeDeCirculation(serveur, carrefours);
             sleep(1);
             main();

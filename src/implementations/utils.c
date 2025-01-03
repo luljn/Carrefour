@@ -205,6 +205,14 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
     printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
     sleep(2);
 
+    typeDeCirculation("../logs/carrefour1.txt", 1);
+    typeDeCirculation("../logs/carrefour2.txt", 1);
+    typeDeCirculation("../logs/carrefour3.txt", 1);
+    typeDeCirculation("../logs/carrefour4.txt", 1);
+
+    affichageDonneesSimulation(serveur, carrefours);
+    sleep(1);
+
     while(1){
 
         affichageDonneesSimulation(serveur, carrefours);

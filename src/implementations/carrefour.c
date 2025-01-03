@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "../includes/carrefour.h"
 #include "../includes/file.h"
 #include "../includes/vehicule.h"
@@ -58,13 +59,18 @@ void enregistrerDonnees(char cheminFichier[23], Vehicule* vehicule, char movemen
 void typeDeCirculation(char cheminFichier[23], int typeDeCirculation){
 
     FILE *fichier = fopen(cheminFichier, "a");
+    time_t maintenant;
+    struct tm *heure_locale;
+
+    maintenant = time(NULL);
+    heure_locale = localtime(&maintenant);
 
     if(fichier != NULL){
 
         switch(typeDeCirculation){
 
             case 1 :
-                fprintf(fichier, "\t\t\t\t\t\t\t*** Circulation Normale ***\n\n");
+                fprintf(fichier, "\t\t\t\t\t\t\t*** Circulation Normale *** du  %02d/%02d/%d à %dh:%dmin:%dsec\n\n", heure_locale->tm_mday, heure_locale->tm_mon + 1, heure_locale->tm_year + 1900, heure_locale->tm_hour, heure_locale->tm_min, heure_locale->tm_sec);
                 fclose(fichier);
                 break;
             

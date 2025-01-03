@@ -3,9 +3,12 @@
 #include <unistd.h>
 #include "includes/carrefour.h"
 #include "includes/file.h"
+#include "includes/main.h"
 #include "includes/serveur.h"
 #include "includes/utils.h"
 #include "includes/vehicule.h"
+
+extern int main(void);
 
 
 
@@ -23,55 +26,11 @@ int main(void){
     title();
     choix = menu();
 
-    switch(choix){
-
-        case '1' :
-            genererVehiculesPrioritaires(serveur->file_p, 10);
-            genererVehiculesNonPrioritaires(serveur->file_np, 10);
-            // typeDeCirculation("../logs/carrefour1.txt", 1);
-            // typeDeCirculation("../logs/carrefour2.txt", 1);
-            // typeDeCirculation("../logs/carrefour3.txt", 1);
-            // typeDeCirculation("../logs/carrefour4.txt", 1);
-            simulationSystemeDeCirculation(serveur, carrefours);
-            sleep(1);
-            main();
-            break;
-        
-        case '2' :
-            genererVehiculesNonPrioritaires(serveur->file_np, 50);
-            heureDePointe(serveur, carrefours);
-            // sleep(1);
-            // main();
-            break;
-        
-        case '5' :
-            system("clear");
-            exit(EXIT_SUCCESS);
-            break;
-        
-        default :
-            system("clear");
-            main();
-            break;
-    }
+    /* Gestion des types de simulation */
+    gestionDesSimulations(choix, serveur, carrefours);
 
     /* Libération de la mémoire dynamique. */
-    for(int i = 0; i<=3; i++){
-
-        free(carrefours[i]->file);
-    }
-
-    for(int i = 0; i<=3; i++){
-
-        free(carrefours[i]);
-    }
-
-    viderFile(serveur->file_p);
-    viderFile(serveur->file_np);
-
-    free(serveur->file_p);
-    free(serveur->file_np);
-    free(serveur);
+    libererMemoireDynamique(serveur, carrefours);
 
     return 0;
 }

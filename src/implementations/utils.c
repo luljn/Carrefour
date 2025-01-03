@@ -184,7 +184,7 @@ void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
 }
 
 // Fonction de simulation du système de circulation.
-void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
+void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4]){
 
     key_t cle = 1;
     int flag, num, i;
@@ -288,7 +288,7 @@ void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]){
     }
 }
 
-void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
+void simulationSystemeDeCirculation2(Serveur* serveur, Carrefour* carrefours[4]){
 
     key_t cle = 1;
     int flag, num, i;
@@ -307,6 +307,14 @@ void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
     system("clear");
     printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
     sleep(2);
+
+    typeDeCirculation("../logs/carrefour1.txt", 2);
+    typeDeCirculation("../logs/carrefour2.txt", 2);
+    typeDeCirculation("../logs/carrefour3.txt", 2);
+    typeDeCirculation("../logs/carrefour4.txt", 2);
+
+    affichageDonneesSimulation(serveur, carrefours);
+    sleep(1);
 
     while(1){
 

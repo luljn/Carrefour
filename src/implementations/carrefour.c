@@ -55,7 +55,7 @@ void enregistrerDonnees(char cheminFichier[23], Vehicule* vehicule, char movemen
     }
 }
 
-// Enregistrer le type de circulation pour les logs.
+// Enregistrer le type de circulation dans les logs.
 void typeDeCirculation(char cheminFichier[23], int typeDeCirculation){
 
     FILE *fichier = fopen(cheminFichier, "a");

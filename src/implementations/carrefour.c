@@ -74,6 +74,21 @@ void typeDeCirculation(char cheminFichier[23], int typeDeCirculation){
                 fclose(fichier);
                 break;
             
+            case 2 :
+                fprintf(fichier, "\t\t\t\t\t\t\t*** Heure De Pointe *** du  %02d/%02d/%d à %dh:%dmin:%dsec\n\n", heure_locale->tm_mday, heure_locale->tm_mon + 1, heure_locale->tm_year + 1900, heure_locale->tm_hour, heure_locale->tm_min, heure_locale->tm_sec);
+                fclose(fichier);
+                break;
+            
+            case 3 :
+                fprintf(fichier, "\t\t\t\t\t\t\t*** Accidents *** du  %02d/%02d/%d à %dh:%dmin:%dsec\n\n", heure_locale->tm_mday, heure_locale->tm_mon + 1, heure_locale->tm_year + 1900, heure_locale->tm_hour, heure_locale->tm_min, heure_locale->tm_sec);
+                fclose(fichier);
+                break;
+            
+            case 4 :
+                fprintf(fichier, "\t\t\t\t\t\t\t*** Travaux *** du  %02d/%02d/%d à %dh:%dmin:%dsec\n\n", heure_locale->tm_mday, heure_locale->tm_mon + 1, heure_locale->tm_year + 1900, heure_locale->tm_hour, heure_locale->tm_min, heure_locale->tm_sec);
+                fclose(fichier);
+                break;
+
             default :
                 break;
         }

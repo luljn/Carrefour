@@ -1,0 +1,66 @@
+							*** Circulation Normale *** du  03/01/2025 à 9h:38min:58sec
+
+							*** Circulation Normale *** du  03/01/2025 à 10h:17min:30sec
+
+							*** Heure De Pointe *** du  03/01/2025 à 10h:38min:38sec
+
+Le véhicule d'id '20' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '21' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '22' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '23' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '24' et de type 'moto' est entré dans le carrefour.
+
+Le véhicule d'id '25' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '26' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '27' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '28' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '29' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '20' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '21' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '22' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '23' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '24' et de type 'moto' est entré dans le carrefour.
+
+Le véhicule d'id '25' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '26' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '27' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '28' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '29' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '20' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '21' et de type 'camion' est sorti du carrefour.
+
+Le véhicule d'id '22' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '23' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '24' et de type 'moto' est sorti du carrefour.
+
+Le véhicule d'id '25' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '26' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '27' et de type 'camion' est sorti du carrefour.
+
+Le véhicule d'id '28' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '29' et de type 'voiture' est sorti du carrefour.
+

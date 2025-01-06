@@ -20,7 +20,10 @@ void recevoirRequete(int num, Message requete);                                /
 int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carrefours[4]);              // Le serveur envoie des réponses aux véhicules pour les informer de l'état du traffic.
 void recevoirReponse(int num, Message reponse);                                                         // Les véhicules reçoivent les réponses du serveur.
 void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee);          // Déplacement d'un véhicule d'une file à une autre.
-void simulationSystemeDeCirculation(Serveur* serveur, Carrefour* carrefours[4]);
+void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4]);
+void simulationSystemeDeCirculation2(Serveur* serveur, Carrefour* carrefours[4]);
+void simulationSystemeDeCirculation3(Serveur* serveur, Carrefour* carrefours[4]);
+void simulationSystemeDeCirculation4(Serveur* serveur, Carrefour* carrefours[4]);
 
 
 

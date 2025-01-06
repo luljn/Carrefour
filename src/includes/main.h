@@ -31,16 +31,22 @@ void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
     main();
 }
 
-/* */
+/* Fonction de simulation de circulation pendant des accidents */
 void accidents(Serveur* serveur, Carrefour* carrefours[4]){
 
-
+    system("clear");
+    printf("\n\n\n\t\t\t\t\tScénario non disponible pour le moment :( !\n\n\n");
+    sleep(2);
+    main();
 }
 
-/* */
+/* Fonction de simulation de circulation pendant des travaux */
 void travaux(Serveur* serveur, Carrefour* carrefours[4]){
 
-    
+    system("clear");
+    printf("\n\n\n\t\t\t\t\tScénario non disponible pour le moment :( !\n\n\n");
+    sleep(2);
+    main();
 }
 
 /* Libérer la mémoire dynamique allouée */
@@ -75,6 +81,14 @@ void gestionDesSimulations(int choix, Serveur* serveur, Carrefour* carrefours[4]
         
         case '2' :
             heureDePointe(serveur, carrefours);
+            break;
+        
+        case '3' :
+            accidents(serveur, carrefours);
+            break;
+        
+        case '4' :
+            travaux(serveur, carrefours);
             break;
         
         case '5' :

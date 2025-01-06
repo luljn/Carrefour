@@ -181,9 +181,14 @@ void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
             ajouterDebut(arrivee, vehicule);
         supprimer(origine);
     }
+
+    else if(longueurFile(arrivee) == 10){
+
+        
+    }
 }
 
-// Fonction de simulation du système de circulation.
+// Fonction de simulation du système de circulation pour le 1er scénario.
 void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4]){
 
     key_t cle = 1;
@@ -288,6 +293,7 @@ void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4])
     }
 }
 
+/* Fonction de simulation du système de circulation pour le 2ème scénario. */
 void simulationSystemeDeCirculation2(Serveur* serveur, Carrefour* carrefours[4]){
 
     key_t cle = 1;
@@ -320,29 +326,30 @@ void simulationSystemeDeCirculation2(Serveur* serveur, Carrefour* carrefours[4])
 
         affichageDonneesSimulation(serveur, carrefours);
 
-        if(carrefours[0]->compteur == 10 && carrefours[1]->compteur == 10 && carrefours[2]->compteur == 10 
-            && carrefours[3]->compteur == 10 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 10){
+        if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
+            && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
         // if(longueurFile(carrefours[4]->file) == 10){
             
             msgctl(num, IPC_RMID, 0);
             break;
         }
 
-        while(longueurFile(carrefours[0]->file) != 10 || longueurFile(carrefours[1]->file) != 10
-                || longueurFile(carrefours[2]->file) != 10 || longueurFile(carrefours[3]->file) != 10){
+        // while(longueurFile(carrefours[0]->file) != 10 || longueurFile(carrefours[1]->file) != 10
+        //         || longueurFile(carrefours[2]->file) != 10 || longueurFile(carrefours[3]->file) != 10){
+        while(longueurFile(serveur->file_np) != 0 || longueurFile(serveur->file_p) != 0){
 
             /* Evoie de la requête au serveur */
             envoyerRequete(num, message, serveur->file_np->premier);
-            // sleep(2);
+            sleep(2);
             /* Réception de la requête du véhicule */
             recevoirRequete(num, message);
-            // sleep(2);
+            sleep(2);
             /* Envoie de la réponse au véhicule */
             i = envoyerReponse(num, message, serveur->file_np->premier, carrefours);
-            // sleep(2);
+            sleep(2);
             /* Réception de la réponse du serveur */
             recevoirReponse(num, message);
-            // sleep(2);
+            sleep(2);
             Vehicule* vehicule1 = malloc(sizeof(Vehicule));
             deplacerVehicule(vehicule1, serveur->file_np, carrefours[i]->file);
 
@@ -368,5 +375,105 @@ void simulationSystemeDeCirculation2(Serveur* serveur, Carrefour* carrefours[4])
             affichageDonneesSimulation(serveur, carrefours);
             sleep(1);
         }
+
+        for(int k = 0; k<=3; k++){
+
+            switch(k){
+            
+                case 0 :
+                    enregistrerDonnees("../logs/carrefour1.txt", carrefours[k]->file->premier, "sortie");
+                    supprimer(carrefours[k]->file);
+                    affichageDonneesSimulation(serveur, carrefours);
+                    sleep(1);
+                    break;
+                
+                case 1 :
+                    enregistrerDonnees("../logs/carrefour2.txt", carrefours[k]->file->premier, "sortie");
+                    supprimer(carrefours[k]->file);
+                    affichageDonneesSimulation(serveur, carrefours);
+                    sleep(1);
+                    break;
+                
+                case 2 :
+                    enregistrerDonnees("../logs/carrefour3.txt", carrefours[k]->file->premier, "sortie");
+                    supprimer(carrefours[k]->file);
+                    affichageDonneesSimulation(serveur, carrefours);
+                    sleep(1);
+                    break;
+                
+                case 3 :
+                    enregistrerDonnees("../logs/carrefour4.txt", carrefours[k]->file->premier, "sortie");
+                    supprimer(carrefours[k]->file);
+                    affichageDonneesSimulation(serveur, carrefours);
+                    sleep(1);
+                    break;
+                
+                default :
+                    break;
+            }
+        }
     }
+
+    affichageDonneesSimulation(serveur, carrefours);
+    sleep(1);
+}
+
+/* Fonction de simulation du système de circulation pour le 3ème scénario. */
+void simulationSystemeDeCirculation3(Serveur* serveur, Carrefour* carrefours[4]){
+
+    key_t cle = 1;
+    int flag, num, i;
+    long t = 1;
+    flag = IPC_CREAT | IPC_EXCL | 0666;
+    Message message; 
+    message.type = t;
+
+    /* Initialisation de la file message */
+    if((num = msgget(cle, flag)) == -1){
+
+        fprintf(stderr, "Création de la file de message impossible !\n\n");
+        exit(1);
+    }
+
+    system("clear");
+    printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
+    sleep(2);
+
+    typeDeCirculation("../logs/carrefour1.txt", 3);
+    typeDeCirculation("../logs/carrefour2.txt", 3);
+    typeDeCirculation("../logs/carrefour3.txt", 3);
+    typeDeCirculation("../logs/carrefour4.txt", 3);
+
+    affichageDonneesSimulation(serveur, carrefours);
+    sleep(1);
+}
+
+/* Fonction de simulation du système de circulation pour le 4ème scénario. */
+void simulationSystemeDeCirculation4(Serveur* serveur, Carrefour* carrefours[4]){
+
+    key_t cle = 1;
+    int flag, num, i;
+    long t = 1;
+    flag = IPC_CREAT | IPC_EXCL | 0666;
+    Message message; 
+    message.type = t;
+
+    /* Initialisation de la file message */
+    if((num = msgget(cle, flag)) == -1){
+
+        fprintf(stderr, "Création de la file de message impossible !\n\n");
+        exit(1);
+    }
+
+    system("clear");
+    printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
+    sleep(2);
+
+    typeDeCirculation("../logs/carrefour1.txt", 4);
+    typeDeCirculation("../logs/carrefour2.txt", 4);
+    typeDeCirculation("../logs/carrefour3.txt", 4);
+    typeDeCirculation("../logs/carrefour4.txt", 4);
+
+    affichageDonneesSimulation(serveur, carrefours);
+    sleep(1);
 }

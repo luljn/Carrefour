@@ -24,3 +24,43 @@ Le véhicule d'id '38' et de type 'voiture' est entré dans le carrefour.
 
 Le véhicule d'id '39' et de type 'camion' est entré dans le carrefour.
 
+Le véhicule d'id '30' et de type 'moto' est entré dans le carrefour.
+
+Le véhicule d'id '31' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '32' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '33' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '34' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '35' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '36' et de type 'moto' est entré dans le carrefour.
+
+Le véhicule d'id '37' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '38' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '39' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '30' et de type 'moto' est sorti du carrefour.
+
+Le véhicule d'id '31' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '32' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '33' et de type 'camion' est sorti du carrefour.
+
+Le véhicule d'id '34' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '35' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '36' et de type 'moto' est sorti du carrefour.
+
+Le véhicule d'id '37' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '38' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '39' et de type 'camion' est sorti du carrefour.
+

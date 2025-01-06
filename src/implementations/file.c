@@ -70,7 +70,7 @@ void ajouterDebut(File* file, Vehicule *vehicule){
 
     nouveau = vehicule;
 
-    /* Insertion de l'élément au début de la liste */
+    /* Insertion de l'élément au début de la file */
     nouveau->suivant = file->premier;
     file->premier = nouveau;
 }

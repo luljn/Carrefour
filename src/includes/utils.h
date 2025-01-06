@@ -22,6 +22,8 @@ void recevoirReponse(int num, Message reponse);                                 
 void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee);          // Déplacement d'un véhicule d'une file à une autre.
 void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4]);
 void simulationSystemeDeCirculation2(Serveur* serveur, Carrefour* carrefours[4]);
+void simulationSystemeDeCirculation3(Serveur* serveur, Carrefour* carrefours[4]);
+void simulationSystemeDeCirculation4(Serveur* serveur, Carrefour* carrefours[4]);
 
 
 

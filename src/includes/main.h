@@ -12,6 +12,7 @@ extern int main(void);
 
 
 
+/* Fonction de simulation d'une circulation normale, sans emboutteillage etc... */
 void circulationNormale(Serveur* serveur, Carrefour* carrefours[4]){
 
     genererVehiculesPrioritaires(serveur->file_p, 10);
@@ -21,14 +22,28 @@ void circulationNormale(Serveur* serveur, Carrefour* carrefours[4]){
     main();
 }
 
+/* Fonction de simulation de circulation pendant des heures de pointes */
 void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
 
-    genererVehiculesNonPrioritaires(serveur->file_np, 50);
+    genererVehiculesNonPrioritaires(serveur->file_np, 40);
     simulationSystemeDeCirculation2(serveur, carrefours);
     sleep(1);
     main();
 }
 
+/* */
+void accidents(Serveur* serveur, Carrefour* carrefours[4]){
+
+
+}
+
+/* */
+void travaux(Serveur* serveur, Carrefour* carrefours[4]){
+
+    
+}
+
+/* Libérer la mémoire dynamique allouée */
 void libererMemoireDynamique(Serveur* serveur, Carrefour* carrefours[4]){
 
     for(int i = 0; i<=3; i++){
@@ -49,6 +64,7 @@ void libererMemoireDynamique(Serveur* serveur, Carrefour* carrefours[4]){
     free(serveur);
 }
 
+/* Gestionnaire des types de simulation du programme */
 void gestionDesSimulations(int choix, Serveur* serveur, Carrefour* carrefours[4]){
 
     switch(choix){

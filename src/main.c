@@ -20,9 +20,11 @@ int main(void){
     Carrefour *carrefours[4];                            // Tableau de pointeur sur carrefour.
     char choix;
 
+    /* Initialisation du serveur central, et création des 4 carrefours */
     *serveur = initialiserServeur();
     genererCarrefours(carrefours);
 
+    /* Affichage du titre, du menu, puis choix du type de simulation par l'utilisateur */
     title();
     choix = menu();
 

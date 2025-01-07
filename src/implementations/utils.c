@@ -446,6 +446,18 @@ void simulationSystemeDeCirculation3(Serveur* serveur, Carrefour* carrefours[4])
 
     affichageDonneesSimulation(serveur, carrefours);
     sleep(1);
+
+    while(1){
+
+        affichageDonneesSimulation(serveur, carrefours);
+
+        if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
+            && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
+            
+            msgctl(num, IPC_RMID, 0);
+            break;
+        }
+    }
 }
 
 /* Fonction de simulation du système de circulation pour le 4ème scénario. */
@@ -476,4 +488,16 @@ void simulationSystemeDeCirculation4(Serveur* serveur, Carrefour* carrefours[4])
 
     affichageDonneesSimulation(serveur, carrefours);
     sleep(1);
+
+    while(1){
+
+        affichageDonneesSimulation(serveur, carrefours);
+
+        if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
+            && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
+            
+            msgctl(num, IPC_RMID, 0);
+            break;
+        }
+    }
 }

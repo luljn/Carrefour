@@ -35,7 +35,10 @@ void heureDePointe(Serveur* serveur, Carrefour* carrefours[4]){
 void accidents(Serveur* serveur, Carrefour* carrefours[4]){
 
     system("clear");
+    genererVehiculesPrioritaires(serveur->file_p, 10);
+    genererVehiculesNonPrioritaires(serveur->file_np, 10);
     printf("\n\n\n\t\t\t\t\tScénario non disponible pour le moment :( !\n\n\n");
+    // simulationSystemeDeCirculation3(serveur, carrefours);
     sleep(2);
     main();
 }
@@ -44,7 +47,10 @@ void accidents(Serveur* serveur, Carrefour* carrefours[4]){
 void travaux(Serveur* serveur, Carrefour* carrefours[4]){
 
     system("clear");
+    genererVehiculesPrioritaires(serveur->file_p, 10);
+    genererVehiculesNonPrioritaires(serveur->file_np, 10);
     printf("\n\n\n\t\t\t\t\tScénario non disponible pour le moment :( !\n\n\n");
+    // simulationSystemeDeCirculation4(serveur, carrefours);
     sleep(2);
     main();
 }

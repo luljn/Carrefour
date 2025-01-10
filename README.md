@@ -24,6 +24,7 @@ Ce projet est conçu pour s'éxécuter sur un système Linux.
 - Naviguer jusqu'au dossier 'scripts' depuis la racine du dossier principal du projet, et éxécuter le fichier 'compile.sh' avec la commande 'bash compile.sh' pour compiler le code.
 - Naviguer jusqu'au dossier 'executable' depuis la racine du dossier principal du projet, et éxécuter le fichier 'main' avec la commande './main' .
 
-### Autheur
+## Autheurs
 
-Luljn.
+- Luljn.
+- LePiafff.

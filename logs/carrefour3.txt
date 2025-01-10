@@ -68,3 +68,5 @@ Le véhicule d'id '29' et de type 'voiture' est sorti du carrefour.
 
 							*** Travaux *** du  07/01/2025 à 20h:2min:40sec
 
+							*** Travaux *** du  10/01/2025 à 19h:22min:1sec
+

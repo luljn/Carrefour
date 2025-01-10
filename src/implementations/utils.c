@@ -439,6 +439,10 @@ void simulationSystemeDeCirculation3(Serveur* serveur, Carrefour* carrefours[4])
     printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
     sleep(2);
 
+    system("clear");
+    printf("\n\n\t\t\t\tCarrefours 2 et 4 fermés pour cause d'accidents.\n\n");
+    sleep(2);
+
     typeDeCirculation("../logs/carrefour1.txt", 3);
     typeDeCirculation("../logs/carrefour2.txt", 3);
     typeDeCirculation("../logs/carrefour3.txt", 3);
@@ -481,6 +485,10 @@ void simulationSystemeDeCirculation4(Serveur* serveur, Carrefour* carrefours[4])
     printf("\n\n\t\t\t\tFile de message crée avec l'identificateur %d.\n\n", num);
     sleep(2);
 
+    system("clear");
+    printf("\n\n\t\t\t\tCarrefours 2, 3 et 4 fermés pour cause de travaux.\n\n");
+    sleep(2);
+
     typeDeCirculation("../logs/carrefour1.txt", 4);
     typeDeCirculation("../logs/carrefour2.txt", 4);
     typeDeCirculation("../logs/carrefour3.txt", 4);
@@ -499,5 +507,117 @@ void simulationSystemeDeCirculation4(Serveur* serveur, Carrefour* carrefours[4])
             msgctl(num, IPC_RMID, 0);
             break;
         }
+
+        /* Evoie de la requête au serveur */
+        envoyerRequete(num, message, serveur->file_p->premier);
+        sleep(2);
+        /* Réception de la requête du véhicule */
+        recevoirRequete(num, message);
+        sleep(2);
+        /* Envoie de la réponse au véhicule */
+        i = envoyerReponse(num, message, serveur->file_p->premier, carrefours);
+        sleep(2);
+        /* Réception de la réponse du serveur */
+        recevoirReponse(num, message);
+        sleep(2);
+        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule1, serveur->file_p, carrefours[i]->file);
+        switch(i){
+            
+                case 0 :
+                    enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
+                    break;
+                case 1 :
+                    enregistrerDonnees("../logs/carrefour2.txt", vehicule1, "entree");
+                    break;
+                case 2 :
+                    enregistrerDonnees("../logs/carrefour3.txt", vehicule1, "entree");
+                    break;
+                case 3 :
+                    enregistrerDonnees("../logs/carrefour4.txt", vehicule1, "entree");
+                    break;
+                
+                default :
+                    break;
+        }
+        // enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        switch(i){
+            
+                case 0 :
+                    enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "sortie");
+                    break;
+                case 1 :
+                    enregistrerDonnees("../logs/carrefour2.txt", vehicule1, "sortie");
+                    break;
+                case 2 :
+                    enregistrerDonnees("../logs/carrefour3.txt", vehicule1, "sortie");
+                    break;
+                case 3 :
+                    enregistrerDonnees("../logs/carrefour4.txt", vehicule1, "sortie");
+                    break;
+                
+                default :
+                    break;
+            }
+        supprimer(carrefours[i]->file);
+        strcpy(message.message, "");
+
+        /* Evoie de la requête au serveur */
+        envoyerRequete(num, message, serveur->file_np->premier);
+        sleep(2);
+        /* Réception de la requête du véhicule */
+        recevoirRequete(num, message);
+        sleep(2);
+        /* Envoie de la réponse au véhicule */
+        i = envoyerReponse(num, message, serveur->file_np->premier, carrefours);
+        sleep(2);
+        /* Réception de la réponse du serveur */
+        recevoirReponse(num, message);
+        sleep(2);
+        Vehicule* vehicule2 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule2, serveur->file_np, carrefours[i]->file);
+        // enregistrerDonnees("../logs/carrefour2.txt", vehicule2, "entree");
+        switch(i){
+            
+                case 0 :
+                    enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
+                    break;
+                case 1 :
+                    enregistrerDonnees("../logs/carrefour2.txt", vehicule1, "entree");
+                    break;
+                case 2 :
+                    enregistrerDonnees("../logs/carrefour3.txt", vehicule1, "entree");
+                    break;
+                case 3 :
+                    enregistrerDonnees("../logs/carrefour4.txt", vehicule1, "entree");
+                    break;
+                
+                default :
+                    break;
+            }
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        // enregistrerDonnees("../logs/carrefour2.txt", vehicule2, "sortie");
+        switch(i){
+            
+                case 0 :
+                    enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "sortie");
+                    break;
+                case 1 :
+                    enregistrerDonnees("../logs/carrefour2.txt", vehicule1, "sortie");
+                    break;
+                case 2 :
+                    enregistrerDonnees("../logs/carrefour3.txt", vehicule1, "sortie");
+                    break;
+                case 3 :
+                    enregistrerDonnees("../logs/carrefour4.txt", vehicule1, "sortie");
+                    break;
+                
+                default :
+                    break;
+            }
+        supprimer(carrefours[i]->file);
     }
 }

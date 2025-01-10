@@ -440,7 +440,7 @@ void simulationSystemeDeCirculation3(Serveur* serveur, Carrefour* carrefours[4])
     sleep(2);
 
     system("clear");
-    printf("\n\n\t\t\t\tCarrefours 2 et 4 fermés pour cause d'accidents.\n\n");
+    printf("\n\n\t\t\t\tCarrefours 2 et 4 indisponibles pour cause d'accidents.\n\n");
     sleep(2);
 
     typeDeCirculation("../logs/carrefour1.txt", 3);
@@ -461,6 +461,48 @@ void simulationSystemeDeCirculation3(Serveur* serveur, Carrefour* carrefours[4])
             msgctl(num, IPC_RMID, 0);
             break;
         }
+
+        /* Evoie de la requête au serveur */
+        envoyerRequete(num, message, serveur->file_p->premier);
+        sleep(2);
+        /* Réception de la requête du véhicule */
+        recevoirRequete(num, message);
+        sleep(2);
+        /* Envoie de la réponse au véhicule */
+        i = envoyerReponse(num, message, serveur->file_p->premier, carrefours);
+        sleep(2);
+        /* Réception de la réponse du serveur */
+        recevoirReponse(num, message);
+        sleep(2);
+        Vehicule* vehicule1 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule1, serveur->file_p, carrefours[i]->file);
+        enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "entree");
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        enregistrerDonnees("../logs/carrefour1.txt", vehicule1, "sortie");
+        supprimer(carrefours[i]->file);
+        strcpy(message.message, "");
+
+        /* Evoie de la requête au serveur */
+        envoyerRequete(num, message, serveur->file_np->premier);
+        sleep(2);
+        /* Réception de la requête du véhicule */
+        recevoirRequete(num, message);
+        sleep(2);
+        /* Envoie de la réponse au véhicule */
+        i = envoyerReponse(num, message, serveur->file_np->premier, carrefours);
+        sleep(2);
+        /* Réception de la réponse du serveur */
+        recevoirReponse(num, message);
+        sleep(2);
+        Vehicule* vehicule2 = malloc(sizeof(Vehicule));
+        deplacerVehicule(vehicule2, serveur->file_np, carrefours[2]->file);
+        enregistrerDonnees("../logs/carrefour3.txt", vehicule2, "entree");
+        affichageDonneesSimulation(serveur, carrefours);
+        sleep(1);
+        enregistrerDonnees("../logs/carrefour3.txt", vehicule2, "sortie");
+        supprimer(carrefours[2]->file);
+        sleep(1);
     }
 }
 
@@ -612,5 +654,6 @@ void simulationSystemeDeCirculation4(Serveur* serveur, Carrefour* carrefours[4])
                 break;
             }
         supprimer(carrefours[i]->file);
+        sleep(1);
     }
 }

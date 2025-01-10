@@ -150,3 +150,5 @@ Le véhicule d'id '19' et de type 'voiture' est sorti du carrefour.
 
 							*** Travaux *** du  10/01/2025 à 19h:22min:1sec
 
+							*** Accidents *** du  10/01/2025 à 19h:36min:32sec
+

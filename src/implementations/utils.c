@@ -108,11 +108,8 @@ void envoyerRequete(int num, Message requete, Vehicule* vehicule){
     if(i != 0){ system("clear"); fprintf(stderr, "requête non envoyé !\n\n"); }
     else{ 
         system("clear"); 
-        // fprintf(stderr, "Le véhicule d'id %d et de type %s a envoyé -> %s\n\n", vehicule->id, vehicule->type, requete.message); 
         printf("Le véhicule d'id '%d' de type '%s' et de priorité '%d' , a envoyé -> %s\n\n", vehicule->id, vehicule->type, vehicule->estPrioritaire, requete.message);
     }
-
-    // return i;
 }
 
 // Recevoir les requêtes des véhicules.
@@ -151,7 +148,7 @@ int envoyerReponse(int num, Message reponse, Vehicule* vehicule, Carrefour* carr
     int j;
     j = msgsnd(num, &reponse, strlen(reponse.message), IPC_NOWAIT);
     if(j != 0){ system("clear"); fprintf(stderr, "reponse non envoyé !\n\n"); }
-    else{; 
+    else{ 
         printf("Le Serveur a envoyé la réponse -> %s , au véhicule d'id '%d' de type '%s' et de priorité '%d'.\n\n", reponse.message, vehicule->id, vehicule->type, vehicule->estPrioritaire);
     }
 
@@ -171,7 +168,6 @@ void recevoirReponse(int num, Message reponse){
 // Déplacer un véhicule d'une file à une autre (de la file 'origine' vers la file 'arrivee').
 void deplacerVehicule(Vehicule* vehicule, File* origine, File* arrivee){
 
-    // Vehicule* vehicule = malloc(sizeof(Vehicule));
     if(origine->premier != NULL && longueurFile(arrivee) < 10){
         
         dupliquerVehicule(origine->premier, vehicule);
@@ -197,7 +193,6 @@ void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4])
     flag = IPC_CREAT | IPC_EXCL | 0666;
     Message message; 
     message.type = t;
-    // strcpy(message.message, "requête : quelle disponibilité ?");
 
     /* Initialisation de la file message */
     if((num = msgget(cle, flag)) == -1){
@@ -222,7 +217,6 @@ void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4])
 
         affichageDonneesSimulation(serveur, carrefours);
 
-        // if(longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
         if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
             && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
             
@@ -271,24 +265,6 @@ void simulationSystemeDeCirculation1(Serveur* serveur, Carrefour* carrefours[4])
         enregistrerDonnees("../logs/carrefour2.txt", vehicule2, "sortie");
         supprimer(carrefours[1]->file);
 
-        // Vehicule* vehicule3 = malloc(sizeof(Vehicule));
-        // deplacerVehicule(vehicule1, serveur->file_p, carrefours[2]->file);
-        // enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "entree");
-        // affichageDonneesSimulation(serveur, carrefours);
-        // sleep(1);
-        // enregistrerDonnees("../logs/carrefour3.txt", vehicule3, "sortie");
-        // supprimer(carrefours[2]->file);
-        
-
-        // Vehicule* vehicule4 = malloc(sizeof(Vehicule));
-        // deplacerVehicule(vehicule2, serveur->file_np, carrefours[3]->file);
-        // enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "entree");
-        // affichageDonneesSimulation(serveur, carrefours);
-        // sleep(1);
-        // enregistrerDonnees("../logs/carrefour4.txt", vehicule4, "sortie");
-        // supprimer(carrefours[3]->file);
-        
-
         sleep(1);
     }
 }
@@ -328,14 +304,11 @@ void simulationSystemeDeCirculation2(Serveur* serveur, Carrefour* carrefours[4])
 
         if(carrefours[0]->compteur == 0 && carrefours[1]->compteur == 0 && carrefours[2]->compteur == 0 
             && carrefours[3]->compteur == 0 && longueurFile(serveur->file_p) == 0 && longueurFile(serveur->file_np) == 0){
-        // if(longueurFile(carrefours[4]->file) == 10){
             
             msgctl(num, IPC_RMID, 0);
             break;
         }
 
-        // while(longueurFile(carrefours[0]->file) != 10 || longueurFile(carrefours[1]->file) != 10
-        //         || longueurFile(carrefours[2]->file) != 10 || longueurFile(carrefours[3]->file) != 10){
         while(longueurFile(serveur->file_np) != 0 || longueurFile(serveur->file_p) != 0){
 
             /* Evoie de la requête au serveur */

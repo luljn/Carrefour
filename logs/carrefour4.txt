@@ -72,3 +72,5 @@ Le véhicule d'id '39' et de type 'camion' est sorti du carrefour.
 
 							*** Accidents *** du  10/01/2025 à 19h:36min:32sec
 
+							*** Accidents *** du  10/01/2025 à 19h:47min:39sec
+

@@ -144,3 +144,133 @@ Le véhicule d'id '8' et de type 'voiture' est sorti du carrefour.
 
 Le véhicule d'id '9' et de type 'camion' est sorti du carrefour.
 
+							*** Accidents *** du  07/01/2025 à 20h:2min:9sec
+
+							*** Travaux *** du  07/01/2025 à 20h:2min:40sec
+
+							*** Travaux *** du  10/01/2025 à 19h:22min:1sec
+
+Le véhicule d'id '0' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '0' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '5' et de type 'moto' est entré dans le carrefour.
+
+Le véhicule d'id '5' et de type 'moto' est sorti du carrefour.
+
+Le véhicule d'id '1' et de type 'voiture du maire' est entré dans le carrefour.
+
+Le véhicule d'id '1' et de type 'voiture du maire' est sorti du carrefour.
+
+Le véhicule d'id '6' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '6' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '7' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '7' et de type 'voiture' est sorti du carrefour.
+
+Le véhicule d'id '3' et de type 'camion de pompiers' est entré dans le carrefour.
+
+Le véhicule d'id '3' et de type 'camion de pompiers' est sorti du carrefour.
+
+Le véhicule d'id '8' et de type 'camion' est entré dans le carrefour.
+
+Le véhicule d'id '8' et de type 'camion' est sorti du carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '9' et de type 'voiture' est entré dans le carrefour.
+
+Le véhicule d'id '9' et de type 'voiture' est sorti du carrefour.
+
+							*** Accidents *** du  10/01/2025 à 19h:36min:32sec
+
+Le véhicule d'id '0' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '0' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '1' et de type 'voiture du maire' est entré dans le carrefour.
+
+Le véhicule d'id '1' et de type 'voiture du maire' est sorti du carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '3' et de type 'camion de pompiers' est entré dans le carrefour.
+
+Le véhicule d'id '3' et de type 'camion de pompiers' est sorti du carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '5' et de type 'voiture du maire' est entré dans le carrefour.
+
+Le véhicule d'id '5' et de type 'voiture du maire' est sorti du carrefour.
+
+Le véhicule d'id '6' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '6' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '7' et de type 'voiture du maire' est entré dans le carrefour.
+
+Le véhicule d'id '7' et de type 'voiture du maire' est sorti du carrefour.
+
+Le véhicule d'id '8' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '8' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '9' et de type 'camion de pompiers' est entré dans le carrefour.
+
+Le véhicule d'id '9' et de type 'camion de pompiers' est sorti du carrefour.
+
+							*** Accidents *** du  10/01/2025 à 19h:47min:39sec
+
+Le véhicule d'id '0' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '0' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '1' et de type 'voiture du maire' est entré dans le carrefour.
+
+Le véhicule d'id '1' et de type 'voiture du maire' est sorti du carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '2' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '3' et de type 'camion de pompiers' est entré dans le carrefour.
+
+Le véhicule d'id '3' et de type 'camion de pompiers' est sorti du carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '4' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '5' et de type 'voiture du maire' est entré dans le carrefour.
+
+Le véhicule d'id '5' et de type 'voiture du maire' est sorti du carrefour.
+
+Le véhicule d'id '6' et de type 'police' est entré dans le carrefour.
+
+Le véhicule d'id '6' et de type 'police' est sorti du carrefour.
+
+Le véhicule d'id '7' et de type 'voiture du maire' est entré dans le carrefour.
+
+Le véhicule d'id '7' et de type 'voiture du maire' est sorti du carrefour.
+
+Le véhicule d'id '8' et de type 'ambulance' est entré dans le carrefour.
+
+Le véhicule d'id '8' et de type 'ambulance' est sorti du carrefour.
+
+Le véhicule d'id '9' et de type 'camion de pompiers' est entré dans le carrefour.
+
+Le véhicule d'id '9' et de type 'camion de pompiers' est sorti du carrefour.
+

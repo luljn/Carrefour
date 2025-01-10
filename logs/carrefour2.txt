@@ -144,3 +144,13 @@ Le véhicule d'id '18' et de type 'moto' est sorti du carrefour.
 
 Le véhicule d'id '19' et de type 'voiture' est sorti du carrefour.
 
+							*** Accidents *** du  07/01/2025 à 20h:2min:9sec
+
+							*** Travaux *** du  07/01/2025 à 20h:2min:40sec
+
+							*** Travaux *** du  10/01/2025 à 19h:22min:1sec
+
+							*** Accidents *** du  10/01/2025 à 19h:36min:32sec
+
+							*** Accidents *** du  10/01/2025 à 19h:47min:39sec
+

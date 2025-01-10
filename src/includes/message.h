@@ -6,8 +6,8 @@
 typedef struct Message Message;
 struct Message
 {
-    long type;
-    char message[256];
+    long type;             // Type du message.
+    char message[256];     // Contenu du message.
 };
 
 

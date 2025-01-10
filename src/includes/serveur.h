@@ -8,8 +8,8 @@
 typedef struct Serveur Serveur;
 struct Serveur 
 {
-    File* file_p;   // File des véhicules prioritaires.
-    File* file_np;  // File des véhicules non prioritaires.
+    File* file_p;   // File d'attente des véhicules prioritaires.
+    File* file_np;  // File d'attente des véhicules non prioritaires.
 };
 
 Serveur initialiserServeur();
